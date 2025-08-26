@@ -4,6 +4,7 @@ import { useScrolled } from '../hooks';
 import { THEME, ANIMATIONS } from '../constants';
 import LanguageSwitcher from './LanguageSwitcher';
 import { gsap } from 'gsap';
+import { A } from '@solidjs/router';
 
 const Navbar: Component = () => {
     const isScrolled = useScrolled();
@@ -15,7 +16,27 @@ const Navbar: Component = () => {
 
     // GSAP animations for navbar links
     onMount(() => {
-        const navLinks = document.querySelectorAll('.nav-link');
+        // ATA logo hover animation
+        const logoElement = document.querySelector('.logo-ata');
+        if (logoElement) {
+            logoElement.addEventListener('mouseenter', () => {
+                // Sadece parlama efekti
+                gsap.to(logoElement, {
+                    duration: 0.4,
+                    textShadow: "0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4)",
+                    ease: "power2.out"
+                });
+            });
+
+            logoElement.addEventListener('mouseleave', () => {
+                // Parlama efektini kaldır
+                gsap.to(logoElement, {
+                    duration: 0.4,
+                    textShadow: "none",
+                    ease: "power2.out"
+                });
+            });
+        } const navLinks = document.querySelectorAll('.nav-link');
 
         navLinks.forEach((link) => {
             const linkElement = link as HTMLElement;
@@ -142,9 +163,9 @@ const Navbar: Component = () => {
                 <div class={`flex items-center justify-between w-full ${THEME.spacing.navHeight}`}>
                     {/* Logo - En sola */}
                     <div class="flex-shrink-0 -ml-2">
-                        <button onClick={scrollToTop} class={logoStyles()}>
+                        <A href="/" class={`logo-ata cursor-pointer ${logoStyles()}`}>
                             ATA
-                        </button>
+                        </A>
                     </div>
 
                     {/* Navigation Links & Language Switcher - En sağa */}

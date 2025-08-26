@@ -40,7 +40,7 @@ const Navbar: Component = () => {
                 <div class={`flex items-center justify-between ${THEME.spacing.navHeight}`}>
                     {/* Logo */}
                     <button onClick={scrollToTop} class={logoStyles()}>
-                        {t('hero.name')}
+                        ATA
                     </button>
 
                     {/* Navigation Links & Language Switcher */}

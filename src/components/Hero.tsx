@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { useI18n } from '../contexts/I18nContext';
 import { THEME, ANIMATIONS } from '../constants';
 import Button from './Button';
+import AnimatedBackground from './AnimatedBackground';
 
 const Hero: Component = () => {
     const { t } = useI18n();
@@ -52,9 +53,13 @@ const Hero: Component = () => {
     return (
         <section
             id="home"
-            class={`min-h-screen bg-gradient-to-br ${THEME.colors.background.hero} ${THEME.colors.text.primary} flex items-center justify-center`}
+            class="min-h-screen relative flex items-center justify-center overflow-hidden"
         >
-            <div class={`container mx-auto ${THEME.spacing.containerPadding} text-center`}>
+            {/* Animated Background Component */}
+            <AnimatedBackground variant="dark" intensity="high" />
+
+            {/* Content overlay */}
+            <div class={`relative z-10 container mx-auto ${THEME.spacing.containerPadding} text-center ${THEME.colors.text.primary}`}>
                 <div class="mb-8">
                     {/* I AM - üstte daha da sola */}
                     <p class={`text-lg md:text-xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-4 opacity-90 text-center max-w-4xl mx-auto`} style="transform: translateX(-300px);">

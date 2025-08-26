@@ -1,5 +1,7 @@
 {
-  "name": "example-basic",
+  "name": "ata-ozeren-web",
+  "version": "1.0.0",
+  "description": "Ata Özeren's personal website built with SolidJS",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
@@ -8,6 +10,7 @@
     "version": "vinxi version"
   },
   "dependencies": {
+    "@solid-primitives/i18n": "^2.2.1",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",

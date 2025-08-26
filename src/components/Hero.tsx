@@ -56,18 +56,22 @@ const Hero: Component = () => {
         >
             <div class={`container mx-auto ${THEME.spacing.containerPadding} text-center`}>
                 <div class="mb-8">
+                    {/* I AM - üstte daha da sola */}
+                    <p class={`text-lg md:text-xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-4 opacity-90 text-center max-w-4xl mx-auto`} style="transform: translateX(-300px);">
+                        I AM
+                    </p>
+
                     <h1
                         ref={setNameRef}
-                        class={`text-5xl md:text-7xl font-bold mb-6 ${THEME.colors.text.primary}`}
+                        class={`text-6xl md:text-8xl lg:text-9xl font-bold mb-6 ${THEME.colors.text.primary}`}
                         style={{ perspective: "1000px" }}
                     >
                         {/* Bu GSAP tarafından doldurulacak */}
                     </h1>
-                    <p class={`text-xl md:text-2xl ${THEME.colors.text.secondary} mb-4 max-w-2xl mx-auto`}>
-                        {t('hero.title')}
-                    </p>
-                    <p class={`text-lg ${THEME.colors.text.tertiary} mb-12 max-w-3xl mx-auto`}>
-                        {t('hero.description')}
+
+                    {/* FULL STACK DEVELOPER - altta daha fazla sağa */}
+                    <p class={`text-base md:text-lg font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto`} style="transform: translateX(150px);">
+                        Full Stack Developer
                     </p>
 
                     {/* CTA Buttons */}

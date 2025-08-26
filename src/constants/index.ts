@@ -2,7 +2,7 @@
 export const APP_CONFIG = {
     name: 'Ata Özeren',
     title: 'Personal Website',
-    defaultLanguage: 'tr' as const,
+    defaultLanguage: 'en' as const,
     supportedLanguages: ['tr', 'en'] as const,
     scrollThreshold: 50,
     transitionDuration: 300,

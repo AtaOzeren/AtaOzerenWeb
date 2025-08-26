@@ -30,6 +30,14 @@ const getNestedValue = (obj: any, path: string): string => {
 export const I18nProvider: Component<I18nProviderProps> = (props) => {
     const { getValue: getStoredLanguage, setValue: setStoredLanguage } = useLocalStorage('language', APP_CONFIG.defaultLanguage);
 
+    // Development: Clear localStorage to test default language change
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+        const stored = getStoredLanguage();
+        if (stored === 'tr' && APP_CONFIG.defaultLanguage === 'en') {
+            localStorage.removeItem('language');
+        }
+    }
+
     // Initialize locale based on stored preference or browser language
     const getInitialLocale = (): Language => {
         const stored = getStoredLanguage();
@@ -40,6 +48,9 @@ export const I18nProvider: Component<I18nProviderProps> = (props) => {
         const browserLang = getBrowserLanguage();
         if (browserLang.startsWith('tr')) {
             return 'tr';
+        }
+        if (browserLang.startsWith('en')) {
+            return 'en';
         }
 
         return APP_CONFIG.defaultLanguage;

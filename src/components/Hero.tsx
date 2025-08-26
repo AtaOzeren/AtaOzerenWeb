@@ -2,6 +2,7 @@ import { Component, onMount, createSignal } from 'solid-js';
 import { gsap } from 'gsap';
 import { useI18n } from '../contexts/I18nContext';
 import { THEME, ANIMATIONS } from '../constants';
+import Button from './Button';
 
 const Hero: Component = () => {
     const { t } = useI18n();
@@ -48,21 +49,6 @@ const Hero: Component = () => {
         });
     });
 
-    const ctaButtons = [
-        {
-            href: '#projects',
-            text: 'hero.cta',
-            isPrimary: true,
-            styles: `px-8 py-3 bg-gradient-to-r ${THEME.colors.primary.gradient} rounded-lg font-semibold ${THEME.colors.text.primary} hover:${THEME.colors.primary.gradientHover} ${ANIMATIONS.hover.scale} ${ANIMATIONS.transition} shadow-lg`
-        },
-        {
-            href: '#contact',
-            text: 'hero.contact',
-            isPrimary: false,
-            styles: `px-8 py-3 border-2 border-white/40 rounded-lg font-semibold ${THEME.colors.text.primary} ${ANIMATIONS.hover.bg} hover:border-white/60 ${ANIMATIONS.transition}`
-        }
-    ];
-
     return (
         <section
             id="home"
@@ -86,11 +72,21 @@ const Hero: Component = () => {
 
                     {/* CTA Buttons */}
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        {ctaButtons.map(button => (
-                            <a href={button.href} class={button.styles}>
-                                {t(button.text)}
-                            </a>
-                        ))}
+                        <Button
+                            variant="ata-black"
+                            href="#projects"
+                            aria-label={t('hero.cta')}
+                        >
+                            {t('hero.cta')}
+                        </Button>
+
+                        <Button
+                            variant="ata-trans"
+                            href="#contact"
+                            aria-label={t('hero.contact')}
+                        >
+                            {t('hero.contact')}
+                        </Button>
                     </div>
                 </div>
             </div>

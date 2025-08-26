@@ -32,6 +32,13 @@ export const THEME = {
         containerPadding: 'px-6',
         sectionPadding: 'py-12',
     },
+    buttons: {
+        variants: {
+            'ata-black': 'bg-gradient-to-r from-gray-800 to-black text-white hover:from-gray-700 hover:to-gray-900 shadow-lg',
+            'ata-trans': 'border-2 border-white/40 text-white hover:bg-white/20 hover:border-white/60',
+        },
+        base: 'px-8 py-3 rounded-lg font-semibold transition-all duration-300 inline-block text-center',
+    },
 } as const;
 
 // Animation constants

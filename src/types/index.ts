@@ -21,6 +21,19 @@ export interface LanguageSwitcherProps {
     isScrolled?: boolean;
 }
 
+// Button component types
+export type ButtonVariant = 'ata-black' | 'ata-trans';
+
+export interface ButtonProps {
+    variant: ButtonVariant;
+    children: any;
+    href?: string;
+    onClick?: () => void;
+    class?: string;
+    disabled?: boolean;
+    'aria-label'?: string;
+}
+
 // Utility types
 export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type RequiredKeys<T> = {

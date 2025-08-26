@@ -52,3 +52,16 @@ body {
   0%, 100% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(-180px, 120px) scale(0.8); }
 }
+
+/* Flip Card Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}

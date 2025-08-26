@@ -141,14 +141,14 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
     });
 
     return (
-        <div class="fixed left-6 bottom-6 z-50">
-            <div class="flex flex-col gap-4">
+        <div class="fixed left-4 bottom-4 z-50">
+            <div class="flex flex-col gap-3">
                 {links().map((link) => (
                     <a
                         href={link.url}
                         target={link.name === 'mail' ? '_self' : '_blank'}
                         rel={link.name === 'mail' ? '' : 'noopener noreferrer'}
-                        class="social-link relative flex items-center justify-center w-12 h-12 cursor-pointer overflow-hidden"
+                        class="social-link relative flex items-center justify-center w-10 h-10 cursor-pointer overflow-hidden"
                         title={link.label}
                         aria-label={link.label}
                     >
@@ -157,7 +157,7 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
 
                         {/* Icon element for GSAP */}
                         <svg
-                            class="social-icon relative w-6 h-6 text-white z-10"
+                            class="social-icon relative w-5 h-5 text-white z-10"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                         >

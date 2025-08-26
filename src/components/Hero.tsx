@@ -12,8 +12,8 @@ const Hero: Component = () => {
         const nameElement = nameRef();
         if (!nameElement) return;
 
-        // İsmi harflere böl
-        const name = t('hero.name');
+        // İsmi harflere böl - büyük harfle ATA OZEREN
+        const name = "ATA OZEREN";
         const letters = name.split('').map((letter, index) => {
             if (letter === ' ') {
                 return `<span class="inline-block">&nbsp;</span>`;

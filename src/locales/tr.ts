@@ -1,10 +1,10 @@
 export const tr = {
     // Navbar
     nav: {
-        home: "Ana Sayfa",
-        about: "Hakkımda",
-        projects: "Projeler",
-        contact: "İletişim",
+        home: "ANA SAYFA",
+        about: "HAKKIMDA",
+        projects: "PROJELER",
+        contact: "İLETİŞİM",
     },
 
     // Hero Section

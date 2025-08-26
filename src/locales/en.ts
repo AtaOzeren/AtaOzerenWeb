@@ -3,10 +3,10 @@ import type { Locale } from './tr';
 export const en: Locale = {
     // Navbar
     nav: {
-        home: "Home",
-        about: "About",
-        projects: "Projects",
-        contact: "Contact",
+        home: "HOME",
+        about: "ABOUT",
+        projects: "PROJECTS",
+        contact: "CONTACT",
     },
 
     // Hero Section

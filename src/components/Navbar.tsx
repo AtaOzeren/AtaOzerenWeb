@@ -138,15 +138,17 @@ const Navbar: Component = () => {
 
     return (
         <nav class={navStyles()}>
-            <div class={`container mx-auto ${THEME.spacing.containerPadding}`}>
-                <div class={`flex items-center justify-between ${THEME.spacing.navHeight}`}>
-                    {/* Logo */}
-                    <button onClick={scrollToTop} class={logoStyles()}>
-                        ATA
-                    </button>
+            <div class="mx-auto px-10">
+                <div class={`flex items-center justify-between w-full ${THEME.spacing.navHeight}`}>
+                    {/* Logo - En sola */}
+                    <div class="flex-shrink-0 -ml-2">
+                        <button onClick={scrollToTop} class={logoStyles()}>
+                            ATA
+                        </button>
+                    </div>
 
-                    {/* Navigation Links & Language Switcher */}
-                    <div class="flex items-center gap-6">
+                    {/* Navigation Links & Language Switcher - En sağa */}
+                    <div class="flex items-center gap-6 ml-auto -mr-2">
                         <div class="hidden md:flex items-center gap-6">
                             {navigationLinks.map(link => (
                                 <a href={link.href} class={linkStyles()}>

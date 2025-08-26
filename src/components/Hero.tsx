@@ -4,6 +4,7 @@ import { useI18n } from '../contexts/I18nContext';
 import { THEME, ANIMATIONS } from '../constants';
 import Button from './Button';
 import AnimatedBackground from './AnimatedBackground';
+import SocialLinks from './SocialLinks';
 
 const Hero: Component = () => {
     const { t } = useI18n();
@@ -24,7 +25,7 @@ const Hero: Component = () => {
 
         nameElement.innerHTML = letters;
 
-        // GSAP animasyonu
+        // GSAP animasyonu 
         const letterElements = nameElement.querySelectorAll('span');
 
         // Başlangıçta harfleri gizle
@@ -99,6 +100,9 @@ const Hero: Component = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Social Links - Fixed position */}
+            <SocialLinks />
         </section>
     );
 };

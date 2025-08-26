@@ -75,8 +75,8 @@ const Hero: Component = () => {
                         {/* Bu GSAP tarafından doldurulacak */}
                     </h1>
 
-                    {/* FULL STACK DEVELOPER - altta daha fazla sağa */}
-                    <p class={`text-base md:text-lg font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto`} style="transform: translateX(150px);">
+                    {/* FULL STACK DEVELOPER - altta daha da sağa */}
+                    <p class={`text-base md:text-lg font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto`} style="transform: translateX(220px);">
                         Full Stack Developer
                     </p>
 
@@ -84,7 +84,7 @@ const Hero: Component = () => {
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Button
                             variant="ata-black"
-                            href="#projects"
+                            href="/projects"
                             aria-label={t('hero.cta')}
                         >
                             {t('hero.cta')}

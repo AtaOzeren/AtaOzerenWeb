@@ -132,7 +132,7 @@ const Navbar: Component = () => {
 
     const navigationLinks = [
         { href: '#about', key: 'nav.about' },
-        { href: '#projects', key: 'nav.projects' },
+        { href: '/projects', key: 'nav.projects' },
         { href: '#contact', key: 'nav.contact' },
     ];
 

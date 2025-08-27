@@ -1,18 +1,12 @@
 import { Component, onMount } from 'solid-js';
 import { useI18n } from '../contexts/I18nContext';
-import { useScrolled } from '../hooks';
 import { THEME, ANIMATIONS } from '../constants';
 import LanguageSwitcher from './LanguageSwitcher';
 import { gsap } from 'gsap';
 import { A } from '@solidjs/router';
 
 const Navbar: Component = () => {
-    const isScrolled = useScrolled();
     const { t } = useI18n();
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
 
     // GSAP animations for navbar links
     onMount(() => {
@@ -138,18 +132,13 @@ const Navbar: Component = () => {
 
     // Dynamic styles based on scroll state
     const navStyles = () =>
-        `fixed top-0 left-0 right-0 z-50 ${ANIMATIONS.transition} ${isScrolled() ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-        }`;
+        `absolute top-0 left-0 right-0 z-50 ${ANIMATIONS.transition} bg-transparent`;
 
     const logoStyles = () =>
-        `text-3xl font-bold ${ANIMATIONS.transition} ${isScrolled() ? THEME.colors.text.dark : THEME.colors.text.primary
-        }`;
+        `text-3xl font-bold ${ANIMATIONS.transition} ${THEME.colors.text.primary}`;
 
     const linkStyles = () =>
-        `nav-link font-extralight text-sm uppercase tracking-wider ${ANIMATIONS.transition} ${isScrolled()
-            ? 'text-gray-600 hover:text-gray-800'
-            : 'text-white/80 hover:text-white'
-        }`;
+        `nav-link font-extralight text-sm uppercase tracking-wider ${ANIMATIONS.transition} text-white/80 hover:text-white`;
 
     const navigationLinks = [
         { href: '#about', key: 'nav.about' },
@@ -179,9 +168,8 @@ const Navbar: Component = () => {
                         </div>
 
                         {/* Language Switcher */}
-                        <div class={`${ANIMATIONS.transition} ${isScrolled() ? 'opacity-100' : 'opacity-90'
-                            }`}>
-                            <LanguageSwitcher isScrolled={isScrolled()} />
+                        <div class={`${ANIMATIONS.transition} opacity-90`}>
+                            <LanguageSwitcher isScrolled={false} />
                         </div>
                     </div>
                 </div>

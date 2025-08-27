@@ -1,6 +1,6 @@
 import { Component, onMount, createSignal } from 'solid-js';
 import { gsap } from 'gsap';
-import { THEME } from '../constants';
+import { THEME, PROJECT_DETAILS } from '../constants';
 import { useI18n } from '../contexts/I18nContext';
 import Navbar from '../components/Navbar';
 import AnimatedBackground from '../components/AnimatedBackground';
@@ -11,17 +11,12 @@ const Projects: Component = () => {
     const [isFlipped, setIsFlipped] = createSignal(false);
     const [showIcon, setShowIcon] = createSignal(false);
 
-    // Proje listesi - çevrilebilir keys ile
-    const projects = [
-        { name: 'projects.erdemli', image: '/project-images/ErdemliMimarlik.jpg' },
-        { name: 'projects.ege', image: '/project-images/EgeMimarlik.jpg' },
-        { name: 'projects.eje', image: '/project-images/EjeStudio.jpg' },
-        { name: 'projects.delta', image: '/project-images/DeltaFidancilik.jpg' },
-        { name: 'projects.saner', image: '/project-images/SanerKonutlari.jpg' },
-        { name: 'projects.savuncell', image: '/project-images/Savuncell.jpg' },
-        { name: 'projects.turanlar', image: '/project-images/TuranlarHolding.jpg' },
-        { name: 'projects.ykt', image: '/project-images/YktGlobal.jpg' }
-    ];
+    // Proje listesi - project details'den alıyoruz
+    const projects = PROJECT_DETAILS.map(project => ({
+        name: `projects.${project.id}`,
+        image: project.image,
+        id: project.id
+    }));
 
     onMount(() => {
         // Initial animation for project list
@@ -38,10 +33,65 @@ const Projects: Component = () => {
             ease: "power2.out",
             delay: 0.5
         });
+
+        // SyconX continuous glowing animation
+        const startGlowAnimation = () => {
+            const syconxLinks = document.querySelectorAll('.syconx-link');
+
+            syconxLinks.forEach(link => {
+                gsap.to(link, {
+                    textShadow: "0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4)",
+                    duration: 0.6,
+                    ease: "power2.inOut",
+                    yoyo: true,
+                    repeat: 1,
+                    onComplete: () => {
+                        // 1 saniye bekle ve tekrar başlat
+                        setTimeout(startGlowAnimation, 1000);
+                    }
+                });
+            });
+        };
+
+        // İlk animasyonu başlat
+        setTimeout(startGlowAnimation, 1000);
+
+        // SyconX hover animations
+        const setupSyconxHover = () => {
+            const syconxLinks = document.querySelectorAll('.syconx-link');
+
+            syconxLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    gsap.killTweensOf(link); // Mevcut animasyonları durdur
+                    gsap.to(link, {
+                        duration: 0.3,
+                        scale: 1.1,
+                        textShadow: "0 0 25px rgba(255,255,255,1), 0 0 50px rgba(255,255,255,0.6)",
+                        ease: "power2.out"
+                    });
+                });
+
+                link.addEventListener('mouseleave', () => {
+                    gsap.to(link, {
+                        duration: 0.3,
+                        scale: 1,
+                        textShadow: "0 0 10px rgba(255,255,255,0.3)",
+                        ease: "power2.out",
+                        onComplete: () => {
+                            // Hover çıktıktan sonra normal parlama animasyonunu devam ettir
+                            setTimeout(startGlowAnimation, 500);
+                        }
+                    });
+                });
+            });
+        };
+
+        // Hover animasyonlarını biraz gecikmeyle kur (kartlar yüklendikten sonra)
+        setTimeout(setupSyconxHover, 1500);
     });
 
-    const handleMouseEnter = (projectName: string, event: MouseEvent) => {
-        setHoveredProject(projectName);
+    const handleMouseEnter = (projectId: string, event: MouseEvent) => {
+        setHoveredProject(projectId);
         const target = event.currentTarget as HTMLElement;
 
         // Project name animation
@@ -159,7 +209,7 @@ const Projects: Component = () => {
                             {projects.map((project) => (
                                 <div
                                     class="project-item cursor-pointer"
-                                    onMouseEnter={(e) => handleMouseEnter(project.name, e)}
+                                    onMouseEnter={(e) => handleMouseEnter(project.id, e)}
                                     onMouseLeave={handleMouseLeave}
                                 >
                                     <h2 class={`text-xl md:text-2xl font-extralight text-white hover:text-gray-300 transition-colors duration-300 uppercase tracking-widest`}>
@@ -186,7 +236,7 @@ const Projects: Component = () => {
                                         {/* Front Side - Image */}
                                         <div class="absolute inset-0 w-full h-full backface-hidden rounded-lg shadow-2xl overflow-hidden">
                                             <img
-                                                src={projects.find(p => p.name === hoveredProject())?.image}
+                                                src={projects.find(p => p.id === hoveredProject())?.image}
                                                 alt={hoveredProject() || ''}
                                                 class="w-full h-full object-cover"
                                                 style="object-fit: cover;"
@@ -194,9 +244,9 @@ const Projects: Component = () => {
 
                                             {/* Flip Icon */}
                                             {showIcon() && (
-                                                <div class="flip-icon absolute top-4 right-4 w-12 h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/50 shadow-lg hover:bg-white/40 hover:scale-110 transition-all duration-300">
+                                                <div class="flip-icon absolute top-4 right-4 w-12 h-12 bg-black/80 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-gray-300/60 shadow-xl hover:bg-black/90 hover:scale-110 transition-all duration-300">
                                                     <svg
-                                                        class="w-6 h-6 text-white drop-shadow-md"
+                                                        class="w-6 h-6 text-white drop-shadow-lg"
                                                         fill="none"
                                                         stroke="currentColor"
                                                         viewBox="0 0 24 24"
@@ -210,13 +260,74 @@ const Projects: Component = () => {
 
                                         {/* Back Side - Info */}
                                         <div
-                                            class="absolute inset-0 w-full h-full backface-hidden rounded-lg shadow-2xl bg-gradient-to-br from-gray-800 to-black flex items-center justify-center"
+                                            class="absolute inset-0 w-full h-full backface-hidden rounded-lg shadow-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-black flex flex-col justify-between p-8"
                                             style="transform: rotateY(180deg);"
                                         >
-                                            <div class="text-center text-white p-8">
-                                                <h3 class="text-4xl font-light mb-4">{hoveredProject()}</h3>
-                                                <p class="text-xl text-gray-300">Test</p>
-                                            </div>
+                                            {(() => {
+                                                const projectDetail = PROJECT_DETAILS.find(p => p.id === hoveredProject());
+                                                if (!projectDetail) return null;
+
+                                                return (
+                                                    <>
+                                                        {/* Header */}
+                                                        <div class="text-center">
+                                                            <h3 class="text-4xl font-light text-white mb-1">{projectDetail.name}</h3>
+                                                            <p class="text-xs text-gray-500 uppercase tracking-wider mb-2 flex items-center justify-center gap-2">
+                                                                {/* Project Type Icon */}
+                                                                {projectDetail.type === 'corporate' ? (
+                                                                    // Kurumsal ikon (Building)
+                                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                                                    </svg>
+                                                                ) : (
+                                                                    // E-ticaret ikon (Shopping Cart)
+                                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13v6a1 1 0 001 1h8a1 1 0 001-1v-6M7 13L5 8m9 5a1 1 0 100 2 1 1 0 000-2zm-7 0a1 1 0 100 2 1 1 0 000-2z" />
+                                                                    </svg>
+                                                                )}
+                                                                <span>{t(`projects.projectTypes.${projectDetail.type}`)}</span>
+                                                            </p>
+                                                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-6">
+                                                                <a
+                                                                    href="https://syconx.com/"
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    class="syconx-link text-white hover:text-gray-200 transition-all duration-300 no-underline font-medium"
+                                                                    style="text-shadow: 0 0 10px rgba(255,255,255,0.3);"
+                                                                >
+                                                                    {projectDetail.company}
+                                                                </a> {t('projects.developedBy')}
+                                                            </p>
+                                                        </div>
+
+                                                        {/* Technologies - Now at top */}
+                                                        <div class="text-center flex-1 flex flex-col justify-center">
+                                                            <div class="flex flex-wrap gap-2 justify-center">
+                                                                {projectDetail.technologies.map(tech => (
+                                                                    <span class="px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-sm text-gray-200 font-light">
+                                                                        {tech}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Visit Button - Smaller and at bottom */}
+                                                        <div class="text-center">
+                                                            <a
+                                                                href={projectDetail.url}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                class="inline-flex items-center gap-1 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 rounded-md text-white text-sm font-medium transition-all duration-300 hover:scale-105"
+                                                            >
+                                                                <span>{t('projects.visitSite')}</span>
+                                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </>
+                                                );
+                                            })()}
                                         </div>
                                     </div>
                                 </div>

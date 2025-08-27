@@ -36,6 +36,12 @@ export const en: Locale = {
         sourceCode: "Source Code",
         appShowcase: "App Showcase",
         appShowcaseDesc: "Mobile and web applications I've developed",
+        visitSite: "Visit Site",
+        developedBy: "developed by",
+        projectTypes: {
+            corporate: "Corporate Website",
+            ecommerce: "E-Commerce Site"
+        },
         // Project names
         erdemli: "Erdemli Architecture",
         ege: "Ege Architecture",

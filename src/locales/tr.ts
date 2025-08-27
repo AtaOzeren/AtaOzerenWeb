@@ -34,6 +34,12 @@ export const tr = {
         sourceCode: "Kaynak Kod",
         appShowcase: "Uygulama Vitrini",
         appShowcaseDesc: "Geliştirdiğim mobil ve web uygulamaları",
+        visitSite: "Siteyi Ziyaret Et",
+        developedBy: "tarafından geliştirildi",
+        projectTypes: {
+            corporate: "Kurumsal Web Sitesi",
+            ecommerce: "E-Ticaret Sitesi"
+        },
         // Proje isimleri
         erdemli: "Erdemli Mimarlık",
         ege: "Ege Mimarlık",

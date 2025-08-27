@@ -49,3 +49,6 @@ export const ANIMATIONS = {
         bg: 'hover:bg-white/20',
     },
 } as const;
+
+// Re-export from projects
+export * from './projects';

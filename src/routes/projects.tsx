@@ -5,21 +5,61 @@ import { useI18n } from '../contexts/I18nContext';
 import Navbar from '../components/Navbar';
 import AnimatedBackground from '../components/AnimatedBackground';
 
+// Animation configuration constants
+const ANIMATIONS = {
+    projectItems: {
+        duration: 0.8,
+        stagger: 0.1,
+        delay: 0.5,
+        ease: "power2.out"
+    },
+    syconxGlow: {
+        duration: 0.6,
+        glowShadow: "0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4)",
+        hoverShadow: "0 0 25px rgba(255,255,255,1), 0 0 50px rgba(255,255,255,0.6)",
+        interval: 1000,
+        ease: "power2.inOut"
+    },
+    projectHover: {
+        duration: 0.3,
+        scale: 1.05,
+        translation: 20,
+        ease: "power2.out"
+    },
+    imageTransition: {
+        duration: 1.2,
+        ease: "power3.out"
+    },
+    flipCard: {
+        duration: 0.8,
+        ease: "power2.inOut"
+    },
+    flipIcon: {
+        duration: 0.4,
+        ease: "back.out(1.7)"
+    }
+};
+
+// Component URLs and links
+const SYCONX_URL = "https://syconx.com/";
+
 const Projects: Component = () => {
     const { t } = useI18n();
     const [hoveredProject, setHoveredProject] = createSignal<string | null>(null);
     const [isFlipped, setIsFlipped] = createSignal(false);
     const [showIcon, setShowIcon] = createSignal(false);
 
-    // Proje listesi - project details'den alıyoruz
+    // Transform project details into component-friendly format
     const projects = PROJECT_DETAILS.map(project => ({
         name: `projects.${project.id}`,
         image: project.image,
         id: project.id
     }));
 
-    onMount(() => {
-        // Initial animation for project list
+    /**
+     * Initialize project list entrance animation
+     */
+    const initializeProjectAnimation = () => {
         const projectItems = document.querySelectorAll('.project-item');
 
         gsap.fromTo(projectItems, {
@@ -28,125 +68,164 @@ const Projects: Component = () => {
         }, {
             opacity: 1,
             x: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power2.out",
-            delay: 0.5
+            duration: ANIMATIONS.projectItems.duration,
+            stagger: ANIMATIONS.projectItems.stagger,
+            ease: ANIMATIONS.projectItems.ease,
+            delay: ANIMATIONS.projectItems.delay
         });
+    };
 
-        // SyconX continuous glowing animation
-        const startGlowAnimation = () => {
-            const syconxLinks = document.querySelectorAll('.syconx-link');
+    /**
+     * Start continuous glowing animation for SyconX links
+     */
+    const startSyconxGlowAnimation = (): void => {
+        const syconxLinks = document.querySelectorAll('.syconx-link');
 
-            syconxLinks.forEach(link => {
+        syconxLinks.forEach(link => {
+            gsap.to(link, {
+                textShadow: ANIMATIONS.syconxGlow.glowShadow,
+                duration: ANIMATIONS.syconxGlow.duration,
+                ease: ANIMATIONS.syconxGlow.ease,
+                yoyo: true,
+                repeat: 1,
+                onComplete: () => {
+                    setTimeout(startSyconxGlowAnimation, ANIMATIONS.syconxGlow.interval);
+                }
+            });
+        });
+    };
+
+    /**
+     * Setup hover animations for SyconX links
+     */
+    const setupSyconxHoverAnimations = () => {
+        const syconxLinks = document.querySelectorAll('.syconx-link');
+
+        syconxLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                gsap.killTweensOf(link); // Stop current animations
                 gsap.to(link, {
-                    textShadow: "0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4)",
-                    duration: 0.6,
-                    ease: "power2.inOut",
-                    yoyo: true,
-                    repeat: 1,
+                    duration: ANIMATIONS.projectHover.duration,
+                    scale: 1.1,
+                    textShadow: ANIMATIONS.syconxGlow.hoverShadow,
+                    ease: ANIMATIONS.projectHover.ease
+                });
+            });
+
+            link.addEventListener('mouseleave', () => {
+                gsap.to(link, {
+                    duration: ANIMATIONS.projectHover.duration,
+                    scale: 1,
+                    textShadow: "0 0 10px rgba(255,255,255,0.3)",
+                    ease: ANIMATIONS.projectHover.ease,
                     onComplete: () => {
-                        // 1 saniye bekle ve tekrar başlat
-                        setTimeout(startGlowAnimation, 1000);
+                        // Resume normal glow animation after hover
+                        setTimeout(startSyconxGlowAnimation, 500);
                     }
                 });
             });
-        };
+        });
+    };
 
-        // İlk animasyonu başlat
-        setTimeout(startGlowAnimation, 1000);
+    onMount(() => {
+        initializeProjectAnimation();
 
-        // SyconX hover animations
-        const setupSyconxHover = () => {
-            const syconxLinks = document.querySelectorAll('.syconx-link');
+        // Start SyconX glow animation after initial delay
+        setTimeout(startSyconxGlowAnimation, ANIMATIONS.syconxGlow.interval);
 
-            syconxLinks.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    gsap.killTweensOf(link); // Mevcut animasyonları durdur
-                    gsap.to(link, {
-                        duration: 0.3,
-                        scale: 1.1,
-                        textShadow: "0 0 25px rgba(255,255,255,1), 0 0 50px rgba(255,255,255,0.6)",
-                        ease: "power2.out"
-                    });
-                });
-
-                link.addEventListener('mouseleave', () => {
-                    gsap.to(link, {
-                        duration: 0.3,
-                        scale: 1,
-                        textShadow: "0 0 10px rgba(255,255,255,0.3)",
-                        ease: "power2.out",
-                        onComplete: () => {
-                            // Hover çıktıktan sonra normal parlama animasyonunu devam ettir
-                            setTimeout(startGlowAnimation, 500);
-                        }
-                    });
-                });
-            });
-        };
-
-        // Hover animasyonlarını biraz gecikmeyle kur (kartlar yüklendikten sonra)
-        setTimeout(setupSyconxHover, 1500);
+        // Setup hover animations with delay to ensure elements are loaded
+        setTimeout(setupSyconxHoverAnimations, 1500);
     });
 
+    /**
+     * Handle mouse enter event for project items
+     */
     const handleMouseEnter = (projectId: string, event: MouseEvent) => {
         setHoveredProject(projectId);
         const target = event.currentTarget as HTMLElement;
 
-        // Project name animation
+        // Animate project name on hover
         gsap.to(target, {
-            duration: 0.3,
-            x: 20,
-            scale: 1.05,
-            ease: "power2.out"
+            duration: ANIMATIONS.projectHover.duration,
+            x: ANIMATIONS.projectHover.translation,
+            scale: ANIMATIONS.projectHover.scale,
+            ease: ANIMATIONS.projectHover.ease
         });
 
-        // Image animation - çok daha güzel ve yavaş
-        const imageElement = document.querySelector('.project-image');
-        if (imageElement) {
-            gsap.killTweensOf(imageElement);
-            gsap.fromTo(imageElement, {
-                opacity: 0,
-                scale: 0.7,
-                y: 40,
-                rotationY: -20,
-                rotationX: 10,
-                filter: "blur(15px) brightness(0.7)",
-                transformOrigin: "center center"
-            }, {
-                opacity: 1,
-                scale: 1,
-                y: 0,
-                rotationY: 0,
-                rotationX: 0,
-                filter: "blur(0px) brightness(1)",
-                duration: 1.2,
-                ease: "power3.out",
-                transformOrigin: "center center"
-            });
-        }
+        // Animate project image entrance
+        animateProjectImage();
     };
 
+    /**
+     * Animate project image with smooth entrance effect
+     */
+    const animateProjectImage = () => {
+        const imageElement = document.querySelector('.project-image');
+        if (!imageElement) return;
+
+        gsap.killTweensOf(imageElement);
+        gsap.fromTo(imageElement, {
+            opacity: 0,
+            scale: 0.7,
+            y: 40,
+            rotationY: -20,
+            rotationX: 10,
+            filter: "blur(15px) brightness(0.7)",
+            transformOrigin: "center center"
+        }, {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            rotationY: 0,
+            rotationX: 0,
+            filter: "blur(0px) brightness(1)",
+            duration: ANIMATIONS.imageTransition.duration,
+            ease: ANIMATIONS.imageTransition.ease,
+            transformOrigin: "center center"
+        });
+    };
+
+    /**
+     * Handle mouse leave event for project items
+     */
     const handleMouseLeave = (event: MouseEvent) => {
         const target = event.currentTarget as HTMLElement;
 
-        // Reset project name animation only
+        // Reset project name animation
         gsap.to(target, {
-            duration: 0.3,
+            duration: ANIMATIONS.projectHover.duration,
             x: 0,
             scale: 1,
-            ease: "power2.out"
+            ease: ANIMATIONS.projectHover.ease
         });
-
-        // Image kalsın - sadece proje değiştiğinde değişsin
-        // setHoveredProject(null); - Bu satırı kaldırdık
     };
 
+    /**
+     * Handle mouse enter event for project image (shows flip icon)
+     */
     const handleImageHover = () => {
         setShowIcon(true);
+        animateFlipIcon(true);
+    };
+
+    /**
+     * Handle mouse leave event for project image (hides flip icon)
+     */
+    const handleImageLeave = () => {
+        if (!isFlipped()) {
+            setShowIcon(false);
+            animateFlipIcon(false);
+        }
+    };
+
+    /**
+     * Animate flip icon appearance/disappearance
+     */
+    const animateFlipIcon = (show: boolean) => {
         const iconElement = document.querySelector('.flip-icon');
-        if (iconElement) {
+        if (!iconElement) return;
+
+        if (show) {
             gsap.fromTo(iconElement, {
                 opacity: 0,
                 scale: 0.5,
@@ -155,28 +234,23 @@ const Projects: Component = () => {
                 opacity: 1,
                 scale: 1,
                 rotation: 0,
-                duration: 0.4,
-                ease: "back.out(1.7)"
+                duration: ANIMATIONS.flipIcon.duration,
+                ease: ANIMATIONS.flipIcon.ease
+            });
+        } else {
+            gsap.to(iconElement, {
+                opacity: 0,
+                scale: 0.5,
+                rotation: 180,
+                duration: ANIMATIONS.projectHover.duration,
+                ease: "power2.in"
             });
         }
     };
 
-    const handleImageLeave = () => {
-        if (!isFlipped()) {
-            setShowIcon(false);
-            const iconElement = document.querySelector('.flip-icon');
-            if (iconElement) {
-                gsap.to(iconElement, {
-                    opacity: 0,
-                    scale: 0.5,
-                    rotation: 180,
-                    duration: 0.3,
-                    ease: "power2.in"
-                });
-            }
-        }
-    };
-
+    /**
+     * Handle project card flip animation
+     */
     const handleFlip = () => {
         const isCurrentlyFlipped = isFlipped();
         setIsFlipped(!isCurrentlyFlipped);
@@ -185,8 +259,8 @@ const Projects: Component = () => {
         if (cardElement) {
             gsap.to(cardElement, {
                 rotationY: isCurrentlyFlipped ? 0 : 180,
-                duration: 0.8,
-                ease: "power2.inOut",
+                duration: ANIMATIONS.flipCard.duration,
+                ease: ANIMATIONS.flipCard.ease,
                 transformOrigin: "center center"
             });
         }

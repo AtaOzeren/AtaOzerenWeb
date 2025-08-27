@@ -6,29 +6,40 @@ import Button from './Button';
 import AnimatedBackground from './AnimatedBackground';
 import SocialLinks from './SocialLinks';
 
+// Constants for name animation
+const HERO_NAME = "ATA OZEREN";
+const ANIMATION_CONFIG = {
+    letterDelay: 0.05,
+    totalDuration: 1.2,
+    initialDelay: 0.5,
+    ease: "back.out(1.2)"
+};
+
 const Hero: Component = () => {
     const { t } = useI18n();
     const [nameRef, setNameRef] = createSignal<HTMLHeadingElement>();
 
-    onMount(() => {
+    /**
+     * Initialize hero name letter animation using GSAP
+     */
+    const initializeNameAnimation = () => {
         const nameElement = nameRef();
         if (!nameElement) return;
 
-        // İsmi harflere böl - büyük harfle ATA OZEREN
-        const name = "ATA OZEREN";
-        const letters = name.split('').map((letter, index) => {
+        // Convert name string to individual letter spans
+        const letterSpans = HERO_NAME.split('').map((letter, index) => {
             if (letter === ' ') {
                 return `<span class="inline-block">&nbsp;</span>`;
             }
             return `<span class="inline-block letter-${index}">${letter}</span>`;
         }).join('');
 
-        nameElement.innerHTML = letters;
+        nameElement.innerHTML = letterSpans;
 
-        // GSAP animasyonu 
+        // Get all letter elements for animation
         const letterElements = nameElement.querySelectorAll('span');
 
-        // Başlangıçta harfleri gizle
+        // Set initial state: hidden and positioned below
         gsap.set(letterElements, {
             opacity: 0,
             y: 100,
@@ -36,19 +47,23 @@ const Hero: Component = () => {
             transformOrigin: "center bottom"
         });
 
-        // Harfleri tek tek animasyonla göster
+        // Animate letters appearing one by one
         gsap.to(letterElements, {
             opacity: 1,
             y: 0,
             rotationX: 0,
             duration: 0.8,
-            ease: "back.out(1.2)",
+            ease: ANIMATION_CONFIG.ease,
             stagger: {
-                amount: 1.2,
+                amount: ANIMATION_CONFIG.totalDuration,
                 from: "start"
             },
-            delay: 0.5
+            delay: ANIMATION_CONFIG.initialDelay
         });
+    };
+
+    onMount(() => {
+        initializeNameAnimation();
     });
 
     return (
@@ -56,31 +71,38 @@ const Hero: Component = () => {
             id="home"
             class="min-h-screen relative flex items-center justify-center overflow-hidden"
         >
-            {/* Animated Background Component */}
+            {/* Animated Background Layer */}
             <AnimatedBackground variant="dark" intensity="high" />
 
-            {/* Content overlay */}
+            {/* Main Content Container */}
             <div class={`relative z-10 container mx-auto ${THEME.spacing.containerPadding} text-center ${THEME.colors.text.primary}`}>
                 <div class="mb-8">
-                    {/* I AM - üstte daha da sola */}
-                    <p class={`text-lg md:text-xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-4 opacity-90 text-center max-w-4xl mx-auto`} style="transform: translateX(-300px);">
+                    {/* Subtitle: "I AM" */}
+                    <p
+                        class={`text-lg md:text-xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-4 opacity-90 text-center max-w-4xl mx-auto`}
+                        style="transform: translateX(-300px);"
+                    >
                         I AM
                     </p>
 
+                    {/* Main Hero Name */}
                     <h1
                         ref={setNameRef}
                         class={`text-6xl md:text-8xl lg:text-9xl font-bold mb-6 ${THEME.colors.text.primary}`}
                         style={{ perspective: "1000px" }}
                     >
-                        {/* Bu GSAP tarafından doldurulacak */}
+                        {/* Content will be populated by GSAP animation */}
                     </h1>
 
-                    {/* FULL STACK DEVELOPER - altta daha da sağa */}
-                    <p class={`text-base md:text-lg font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto`} style="transform: translateX(220px);">
+                    {/* Role Description */}
+                    <p
+                        class={`text-base md:text-lg font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto`}
+                        style="transform: translateX(220px);"
+                    >
                         Full Stack Developer
                     </p>
 
-                    {/* CTA Buttons */}
+                    {/* Call-to-Action Buttons */}
                     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Button
                             variant="ata-black"
@@ -101,7 +123,7 @@ const Hero: Component = () => {
                 </div>
             </div>
 
-            {/* Social Links - Fixed position */}
+            {/* Social Media Links - Fixed Position */}
             <SocialLinks />
         </section>
     );

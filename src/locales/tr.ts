@@ -32,9 +32,18 @@ export const tr = {
         subtitle: "Son çalışmalarım",
         viewProject: "Projeyi Gör",
         sourceCode: "Kaynak Kod",
-    },
-
-    // Contact Section
+        appShowcase: "Uygulama Vitrini",
+        appShowcaseDesc: "Geliştirdiğim mobil ve web uygulamaları",
+        // Proje isimleri
+        erdemli: "Erdemli Mimarlık",
+        ege: "Ege Mimarlık",
+        eje: "Eje Studio",
+        delta: "Delta Fidancılık",
+        saner: "Saner Konutları",
+        savuncell: "Savuncell",
+        turanlar: "Turanlar Holding",
+        ykt: "Ykt Global"
+    },    // Contact Section
     contact: {
         title: "İletişim",
         subtitle: "Benimle iletişime geçin",
@@ -60,6 +69,8 @@ export const tr = {
         success: "Başarılı",
         close: "Kapat",
         open: "Aç",
+        scrollDown: "Aşağı Kaydır",
+        scrollUp: "Yukarı",
     },
 };
 

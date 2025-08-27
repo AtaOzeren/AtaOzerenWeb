@@ -1,24 +1,26 @@
 import { Component, onMount, createSignal } from 'solid-js';
 import { gsap } from 'gsap';
 import { THEME } from '../constants';
+import { useI18n } from '../contexts/I18nContext';
 import Navbar from '../components/Navbar';
 import AnimatedBackground from '../components/AnimatedBackground';
 
 const Projects: Component = () => {
+    const { t } = useI18n();
     const [hoveredProject, setHoveredProject] = createSignal<string | null>(null);
     const [isFlipped, setIsFlipped] = createSignal(false);
     const [showIcon, setShowIcon] = createSignal(false);
 
-    // Proje listesi
+    // Proje listesi - çevrilebilir keys ile
     const projects = [
-        { name: 'Erdemli Mimarlik', image: '/project-images/ErdemliMimarlik.jpg' },
-        { name: 'Ege Mimarlik', image: '/project-images/EgeMimarlik.jpg' },
-        { name: 'EjeStudio', image: '/project-images/EjeStudio.jpg' },
-        { name: 'Delta Fidancilik', image: '/project-images/DeltaFidancilik.jpg' },
-        { name: 'Saner Konutlari', image: '/project-images/SanerKonutlari.jpg' },
-        { name: 'Savuncell', image: '/project-images/Savuncell.jpg' },
-        { name: 'Turanlar Holding', image: '/project-images/TuranlarHolding.jpg' },
-        { name: 'Ykt Global', image: '/project-images/YktGlobal.jpg' }
+        { name: 'projects.erdemli', image: '/project-images/ErdemliMimarlik.jpg' },
+        { name: 'projects.ege', image: '/project-images/EgeMimarlik.jpg' },
+        { name: 'projects.eje', image: '/project-images/EjeStudio.jpg' },
+        { name: 'projects.delta', image: '/project-images/DeltaFidancilik.jpg' },
+        { name: 'projects.saner', image: '/project-images/SanerKonutlari.jpg' },
+        { name: 'projects.savuncell', image: '/project-images/Savuncell.jpg' },
+        { name: 'projects.turanlar', image: '/project-images/TuranlarHolding.jpg' },
+        { name: 'projects.ykt', image: '/project-images/YktGlobal.jpg' }
     ];
 
     onMount(() => {
@@ -160,8 +162,8 @@ const Projects: Component = () => {
                                     onMouseEnter={(e) => handleMouseEnter(project.name, e)}
                                     onMouseLeave={handleMouseLeave}
                                 >
-                                    <h2 class={`text-3xl md:text-4xl font-extralight text-white hover:text-gray-300 transition-colors duration-300 uppercase tracking-widest`}>
-                                        {project.name}
+                                    <h2 class={`text-xl md:text-2xl font-extralight text-white hover:text-gray-300 transition-colors duration-300 uppercase tracking-widest`}>
+                                        {t(project.name)}
                                     </h2>
                                 </div>
                             ))}
@@ -219,6 +221,34 @@ const Projects: Component = () => {
                                     </div>
                                 </div>
                             )}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Second Section - App Showcase */}
+                <div id="app-showcase" class="min-h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+                    <AnimatedBackground variant="dark" intensity="medium" />
+
+                    <div class="relative z-10 container mx-auto px-10 py-20">
+                        <div class="text-center mb-16">
+                            <h2 class="text-4xl md:text-5xl font-extralight text-white mb-4 uppercase tracking-widest">
+                                {t('projects.appShowcase')}
+                            </h2>
+                            <p class="text-white/70 text-lg">
+                                {t('projects.appShowcaseDesc')}
+                            </p>
+                        </div>
+
+                        {/* App showcase content - şimdilik placeholder */}
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                            <div class="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+                                <h3 class="text-2xl font-light text-white mb-4">Mobil Uygulama 1</h3>
+                                <p class="text-white/70">App detayları buraya gelecek...</p>
+                            </div>
+                            <div class="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+                                <h3 class="text-2xl font-light text-white mb-4">Mobil Uygulama 2</h3>
+                                <p class="text-white/70">App detayları buraya gelecek...</p>
+                            </div>
                         </div>
                     </div>
                 </div>

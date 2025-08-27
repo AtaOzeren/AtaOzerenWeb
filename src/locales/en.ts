@@ -34,9 +34,18 @@ export const en: Locale = {
         subtitle: "Recent work",
         viewProject: "View Project",
         sourceCode: "Source Code",
-    },
-
-    // Contact Section
+        appShowcase: "App Showcase",
+        appShowcaseDesc: "Mobile and web applications I've developed",
+        // Project names
+        erdemli: "Erdemli Architecture",
+        ege: "Ege Architecture",
+        eje: "Eje Studio",
+        delta: "Delta Nursery",
+        saner: "Saner Residences",
+        savuncell: "Savuncell",
+        turanlar: "Turanlar Holding",
+        ykt: "Ykt Global"
+    },    // Contact Section
     contact: {
         title: "Contact",
         subtitle: "Get in touch with me",
@@ -62,5 +71,7 @@ export const en: Locale = {
         success: "Success",
         close: "Close",
         open: "Open",
+        scrollDown: "Scroll Down",
+        scrollUp: "Scroll Up",
     },
 };

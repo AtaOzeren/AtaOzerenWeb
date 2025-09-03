@@ -39,9 +39,9 @@ export const en: Locale = {
         visitSite: "Visit Site",
         developedBy: "developed by",
         projectTypes: {
-            corporate: "Corporate Website",
-            ecommerce: "E-Commerce Site",
-            crm: "CRM System"
+            corporate: "Corporate",
+            ecommerce: "E-Commerce",
+            crm: "CRM"
         },
         // Project names
         erdemli: "Erdemli Architecture",

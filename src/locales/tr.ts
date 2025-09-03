@@ -37,9 +37,9 @@ export const tr = {
         visitSite: "Siteyi Ziyaret Et",
         developedBy: "tarafından geliştirildi",
         projectTypes: {
-            corporate: "Kurumsal Web Sitesi",
-            ecommerce: "E-Ticaret Sitesi",
-            crm: "CRM Sistemi"
+            corporate: "Kurumsal",
+            ecommerce: "E-Ticaret",
+            crm: "CRM"
         },
         // Proje isimleri
         erdemli: "Erdemli Mimarlık",

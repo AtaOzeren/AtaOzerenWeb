@@ -48,7 +48,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/EjeStudio.jpg',
         description: 'Kreatif tasarım stüdyosu web sitesi',
-        type: 'corporate'
+        type: 'ecommerce'
     },
     {
         id: 'delta',
@@ -58,7 +58,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/DeltaFidancilik.jpg',
         description: 'Fidancılık ve peyzaj hizmetleri platformu',
-        type: 'ecommerce'
+        type: 'corporate'
     },
     {
         id: 'saner',
@@ -78,7 +78,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/Savuncell.jpg',
         description: 'Teknoloji ve inovasyon odaklı platform',
-        type: 'ecommerce'
+        type: 'corporate'
     },
     {
         id: 'turanlar',
@@ -98,6 +98,6 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/YktGlobal.jpg',
         description: 'Global ticaret ve lojistik platformu',
-        type: 'ecommerce'
+        type: 'corporate'
     }
 ];

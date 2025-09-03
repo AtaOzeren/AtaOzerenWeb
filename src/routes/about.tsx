@@ -3,6 +3,24 @@ import { useI18n } from "~/contexts/I18nContext";
 import AnimatedBackground from "~/components/AnimatedBackground";
 import { onMount } from "solid-js";
 import gsap from "gsap";
+import { Github, Code, Database, Cloud, Palette } from "lucide-solid";
+import { siHtml5, siCss, siJavascript, siTypescript, siVuedotjs, siNextdotjs, siNuxt, siReact, siCloudflare, siSqlite, siMongodb, siTailwindcss, siGit, siSass } from "simple-icons";
+
+// Simple Icon Component
+const SimpleIcon = (props: { icon: any; size?: number; class?: string }) => {
+  const { icon, size = 24, class: className = "" } = props;
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      class={className}
+      fill="currentColor"
+    >
+      <path d={icon.path} />
+    </svg>
+  );
+};
 
 export default function About() {
   const { t, locale } = useI18n();
@@ -10,6 +28,25 @@ export default function About() {
   let paragraph1Ref: HTMLParagraphElement | undefined;
   let paragraph2Ref: HTMLParagraphElement | undefined;
   let paragraph3Ref: HTMLParagraphElement | undefined;
+  let technologiesRef: HTMLDivElement | undefined;
+
+  // Icon refs
+  let html5Ref: HTMLDivElement | undefined;
+  let cssRef: HTMLDivElement | undefined;
+  let sassRef: HTMLDivElement | undefined;
+  let jsRef: HTMLDivElement | undefined;
+  let tsRef: HTMLDivElement | undefined;
+  let gitRef: HTMLDivElement | undefined;
+  let githubRef: HTMLDivElement | undefined;
+  let vueRef: HTMLDivElement | undefined;
+  let nextRef: HTMLDivElement | undefined;
+  let nuxtRef: HTMLDivElement | undefined;
+  let reactRef: HTMLDivElement | undefined;
+  let reactNativeRef: HTMLDivElement | undefined;
+  let sqliteRef: HTMLDivElement | undefined;
+  let mongodbRef: HTMLDivElement | undefined;
+  let cloudflareRef: HTMLDivElement | undefined;
+  let tailwindRef: HTMLDivElement | undefined;
 
   onMount(() => {
     const paragraphs = [paragraph1Ref, paragraph2Ref, paragraph3Ref].filter(Boolean) as HTMLParagraphElement[];
@@ -26,6 +63,63 @@ export default function About() {
         ease: "power2.out"
       }
     );
+
+    // Technologies animasyonu - gruplar halinde
+    if (technologiesRef) {
+      const techGroups = technologiesRef.children;
+      gsap.fromTo(Array.from(techGroups),
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          delay: 1.5
+        }
+      );
+    }
+
+    // Hover efektleri için GSAP
+    const createHoverEffect = (iconRef: HTMLDivElement | undefined, text: string) => {
+      if (!iconRef) return;
+
+      const icon = iconRef.querySelector('svg');
+      const textElement = iconRef.querySelector('.tech-text');
+
+      if (icon && textElement) {
+        iconRef.addEventListener('mouseenter', () => {
+          gsap.to(icon, { opacity: 0, scale: 0.8, duration: 0.3, ease: "power2.out" });
+          gsap.to(textElement, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+        });
+
+        iconRef.addEventListener('mouseleave', () => {
+          gsap.to(icon, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+          gsap.to(textElement, { opacity: 0, scale: 0.8, duration: 0.3, ease: "power2.out" });
+        });
+      }
+    };
+
+    // Tüm iconlara hover efekti ekle
+    createHoverEffect(html5Ref, 'HTML');
+    createHoverEffect(cssRef, 'CSS');
+    createHoverEffect(sassRef, 'SCSS');
+    createHoverEffect(jsRef, 'JavaScript');
+    createHoverEffect(tsRef, 'TypeScript');
+    createHoverEffect(gitRef, 'Git');
+    createHoverEffect(githubRef, 'GitHub');
+    createHoverEffect(vueRef, 'Vue');
+    createHoverEffect(nextRef, 'Next.js');
+    createHoverEffect(nuxtRef, 'Nuxt.js');
+    createHoverEffect(reactRef, 'React');
+    createHoverEffect(reactNativeRef, 'React Native');
+    createHoverEffect(sqliteRef, 'SQLite');
+    createHoverEffect(mongodbRef, 'MongoDB');
+    createHoverEffect(cloudflareRef, 'Cloudflare');
+    createHoverEffect(tailwindRef, 'Tailwind CSS');
   });
 
   return (
@@ -51,6 +145,97 @@ export default function About() {
               <p ref={el => paragraph3Ref = el} class="text-white leading-relaxed">
                 {t('about.content.paragraph3')}
               </p>
+            </div>
+
+            {/* Technologies Icons */}
+            <div ref={el => technologiesRef = el} class="mt-12">
+              {/* Frontend Temel Teknolojileri */}
+              <div class="grid grid-cols-5 gap-4 mb-6">
+                <div ref={el => html5Ref = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siHtml5} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">HTML</span>
+                </div>
+                <div ref={el => cssRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siCss} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">CSS</span>
+                </div>
+                <div ref={el => sassRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siSass} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">SCSS</span>
+                </div>
+                <div ref={el => jsRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siJavascript} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">JavaScript</span>
+                </div>
+                <div ref={el => tsRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siTypescript} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">TypeScript</span>
+                </div>
+              </div>
+
+              {/* Versiyon Kontrol */}
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div ref={el => gitRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siGit} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Git</span>
+                </div>
+                <div ref={el => githubRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <Github size={24} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">GitHub</span>
+                </div>
+              </div>
+
+              {/* Vue Ekosistemi */}
+              <div class="grid grid-cols-3 gap-4 mb-6">
+                <div ref={el => vueRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siVuedotjs} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Vue</span>
+                </div>
+                <div ref={el => nextRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siNextdotjs} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Next.js</span>
+                </div>
+                <div ref={el => nuxtRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siNuxt} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Nuxt.js</span>
+                </div>
+              </div>
+
+              {/* React Ekosistemi */}
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div ref={el => reactRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siReact} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">React</span>
+                </div>
+                <div ref={el => reactNativeRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siReact} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">React Native</span>
+                </div>
+              </div>
+
+              {/* Veritabanları */}
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div ref={el => sqliteRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siSqlite} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">SQLite</span>
+                </div>
+                <div ref={el => mongodbRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siMongodb} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">MongoDB</span>
+                </div>
+              </div>
+
+              {/* Diğer Araçlar */}
+              <div class="grid grid-cols-2 gap-4">
+                <div ref={el => cloudflareRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siCloudflare} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Cloudflare</span>
+                </div>
+                <div ref={el => tailwindRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siTailwindcss} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Tailwind CSS</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -26,6 +26,12 @@ export const en: Locale = {
         experience: "Experience",
         skills: "Skills",
         years: "years",
+        content: {
+            paragraph1: "I am Ata Özeren, born in 2000 in Izmir, Turkey. I am a software developer with experience in full-stack web and mobile application development. I specialize in modern programming languages and frameworks such as JavaScript, React, React Native, SQL, and Python.",
+            paragraph2: "I have gained experience by working on both domestic and international projects. I am currently employed as a Frontend Developer at SyconX, where I focus on building scalable and user-friendly interfaces. Previously, I worked as a remote Full-Stack Developer at Martsys Software on a project-based basis, and as a developer at YeliApp, where I contributed to in-office project development.",
+            paragraph3: "I am pursuing a Bachelor's degree in Management Information Systems at Anadolu University. Additionally, I hold a Bachelor's degree in Physics and an Associate degree in Computer Programming from Atatürk University. I have also completed the CS50 Web Programming course from Harvard University and received Python training at Middle East Technical University (METU)."
+        },
+        technologies: "Technologies I Use"
     },
 
     // Projects Section

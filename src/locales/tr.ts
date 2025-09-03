@@ -24,6 +24,12 @@ export const tr = {
         experience: "Deneyim",
         skills: "Yetenekler",
         years: "yıl",
+        content: {
+            paragraph1: "Ben, Ata Özeren, 2000 doğumlu ve Türkiye İzmir doğumluyum. Full stack web ve mobil uygulama geliştirme alanlarında tecrübe kazanmış bir yazılım geliştiricisiyim. Özellikle JavaScript, React, React Native ,SQL ve Python gibi modern yazılım dillerinde yetkinlik sahibiyim. Hem Türkiye'de hem de uluslararası projelerde yer alarak deneyim kazandım.",
+            paragraph2: "Şuanda SyconX yazılım firmasında Frontend developer olarak çalışıyorum. Daha öncesinde Martsys Software'da uzaktan proje bazlı Full stack olarak çalıştım ve YeliApp'te ofis ortamında çalışarak projeler geliştirdim.",
+            paragraph3: "Eğitimime Anadolu Üniversitesi'nde Yönetim Bilişim Sistemleri (Lisans) bölümünde devam ediyorum ve Atatürk Üniversitesi'nden Fizik (Lisans) ve Bilgisayar Programcılığı (Ön Lisans) alanlarında diplomalarım bulunuyor. Harvard Üniversitesi'nin CS50 Web Programming sertifikasına sahibim ve ODTÜ 'den Python üzerine eğitimler aldım."
+        },
+        technologies: "Kullandığım Teknolojiler"
     },
 
     // Projects Section

@@ -23,7 +23,7 @@ const LINK_ANIMATION = {
 
 // Navigation links configuration
 const NAVIGATION_LINKS = [
-    { href: '#about', key: 'nav.about' },
+    { href: '/about', key: 'nav.about' },
     { href: '/projects', key: 'nav.projects' },
     { href: '#contact', key: 'nav.contact' },
 ];
@@ -210,9 +210,9 @@ const Navbar: Component = () => {
                         {/* Desktop Navigation Links */}
                         <div class="hidden md:flex items-center gap-6">
                             {NAVIGATION_LINKS.map(link => (
-                                <a href={link.href} class={linkStyles()}>
+                                <A href={link.href} class={linkStyles()}>
                                     {t(link.key)}
-                                </a>
+                                </A>
                             ))}
                         </div>
 

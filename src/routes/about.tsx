@@ -64,10 +64,10 @@ export default function About() {
       }
     );
 
-    // Technologies animasyonu - gruplar halinde
+    // Technologies animasyonu
     if (technologiesRef) {
-      const techGroups = technologiesRef.children;
-      gsap.fromTo(Array.from(techGroups),
+      const techIcons = technologiesRef.querySelectorAll('.cursor-pointer');
+      gsap.fromTo(Array.from(techIcons),
         {
           opacity: 0,
           y: 30
@@ -76,7 +76,7 @@ export default function About() {
           opacity: 1,
           y: 0,
           duration: 0.8,
-          stagger: 0.2,
+          stagger: 0.05,
           ease: "power2.out",
           delay: 1.5
         }
@@ -149,8 +149,8 @@ export default function About() {
 
             {/* Technologies Icons */}
             <div ref={el => technologiesRef = el} class="mt-12">
-              {/* Frontend Temel Teknolojileri */}
-              <div class="grid grid-cols-5 gap-4 mb-6">
+              {/* Tüm Teknoloji Iconları */}
+              <div class="grid grid-cols-4 md:grid-cols-8 gap-4">
                 <div ref={el => html5Ref = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siHtml5} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">HTML</span>
@@ -171,10 +171,6 @@ export default function About() {
                   <SimpleIcon icon={siTypescript} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">TypeScript</span>
                 </div>
-              </div>
-
-              {/* Versiyon Kontrol */}
-              <div class="grid grid-cols-2 gap-4 mb-6">
                 <div ref={el => gitRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siGit} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Git</span>
@@ -183,10 +179,6 @@ export default function About() {
                   <Github size={24} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">GitHub</span>
                 </div>
-              </div>
-
-              {/* Vue Ekosistemi */}
-              <div class="grid grid-cols-3 gap-4 mb-6">
                 <div ref={el => vueRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siVuedotjs} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Vue</span>
@@ -199,10 +191,6 @@ export default function About() {
                   <SimpleIcon icon={siNuxt} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Nuxt.js</span>
                 </div>
-              </div>
-
-              {/* React Ekosistemi */}
-              <div class="grid grid-cols-2 gap-4 mb-6">
                 <div ref={el => reactRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siReact} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">React</span>
@@ -211,10 +199,6 @@ export default function About() {
                   <SimpleIcon icon={siReact} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">React Native</span>
                 </div>
-              </div>
-
-              {/* Veritabanları */}
-              <div class="grid grid-cols-2 gap-4 mb-6">
                 <div ref={el => sqliteRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siSqlite} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">SQLite</span>
@@ -223,10 +207,6 @@ export default function About() {
                   <SimpleIcon icon={siMongodb} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">MongoDB</span>
                 </div>
-              </div>
-
-              {/* Diğer Araçlar */}
-              <div class="grid grid-cols-2 gap-4">
                 <div ref={el => cloudflareRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siCloudflare} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Cloudflare</span>

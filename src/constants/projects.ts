@@ -6,10 +6,20 @@ export interface ProjectDetail {
     url: string;
     image: string;
     description?: string;
-    type: 'corporate' | 'ecommerce'; // Proje türü eklendi
+    type: 'corporate' | 'ecommerce' | 'crm';
 }
 
 export const PROJECT_DETAILS: ProjectDetail[] = [
+    {
+        id: 'sanercrm',
+        name: 'Saner CRM',
+        company: 'SyconX',
+        technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
+        url: 'https://crm.sanerkonutlari.com/',
+        image: '/project-images/SanerCRM.jpeg',
+        description: 'Modern mimarlık hizmetleri sunan kurumsal web sitesi',
+        type: 'crm'
+    },
     {
         id: 'erdemli',
         name: 'Erdemli Mimarlık',

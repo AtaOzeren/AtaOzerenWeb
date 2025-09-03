@@ -38,13 +38,15 @@ export const tr = {
         developedBy: "tarafından geliştirildi",
         projectTypes: {
             corporate: "Kurumsal Web Sitesi",
-            ecommerce: "E-Ticaret Sitesi"
+            ecommerce: "E-Ticaret Sitesi",
+            crm: "CRM Sistemi"
         },
         // Proje isimleri
         erdemli: "Erdemli Mimarlık",
         ege: "Ege Mimarlık",
         eje: "Eje Studio",
         delta: "Delta Fidancılık",
+        sanercrm: "Saner CRM",
         saner: "Saner Konutları",
         savuncell: "Savuncell",
         turanlar: "Turanlar Holding",

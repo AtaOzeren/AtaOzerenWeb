@@ -40,13 +40,15 @@ export const en: Locale = {
         developedBy: "developed by",
         projectTypes: {
             corporate: "Corporate Website",
-            ecommerce: "E-Commerce Site"
+            ecommerce: "E-Commerce Site",
+            crm: "CRM System"
         },
         // Project names
         erdemli: "Erdemli Architecture",
         ege: "Ege Architecture",
         eje: "Eje Studio",
         delta: "Delta Nursery",
+        sanercrm: "Saner CRM",
         saner: "Saner Residences",
         savuncell: "Savuncell",
         turanlar: "Turanlar Holding",

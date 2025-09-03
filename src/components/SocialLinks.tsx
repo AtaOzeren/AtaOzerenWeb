@@ -73,14 +73,6 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
 
             // Hover animations
             linkElement.addEventListener('mouseenter', () => {
-                // Background subtle glow effect only
-                gsap.to(background, {
-                    duration: 0.3,
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    borderColor: 'rgba(255, 255, 255, 0.4)',
-                    ease: "power2.out"
-                });
-
                 // Icon animation - only the icon moves and scales
                 gsap.to(icon, {
                     duration: 0.4,
@@ -105,14 +97,6 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
             });
 
             linkElement.addEventListener('mouseleave', () => {
-                // Reset background
-                gsap.to(background, {
-                    duration: 0.3,
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    borderColor: 'rgba(255, 255, 255, 0.2)',
-                    ease: "power2.out"
-                });
-
                 // Reset icon - kill all icon animations
                 gsap.killTweensOf(icon);
                 gsap.to(icon, {
@@ -153,7 +137,7 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
                         aria-label={link.label}
                     >
                         {/* Background element for GSAP */}
-                        <div class="social-bg absolute inset-0 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full" />
+                        <div class="social-bg absolute inset-0 backdrop-blur-sm border rounded-full" />
 
                         {/* Icon element for GSAP */}
                         <svg

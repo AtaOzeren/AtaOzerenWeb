@@ -42,6 +42,8 @@ export const tr = {
         appShowcaseDesc: "Geliştirdiğim mobil ve web uygulamaları",
         visitSite: "Siteyi Ziyaret Et",
         developedBy: "tarafından geliştirildi",
+        scrollToApps: "Uygulamalara Geç",
+        continueReading: "Devamını Gör",
         projectTypes: {
             corporate: "Kurumsal",
             ecommerce: "E-Ticaret",

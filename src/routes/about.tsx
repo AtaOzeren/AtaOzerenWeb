@@ -4,7 +4,7 @@ import AnimatedBackground from "~/components/AnimatedBackground";
 import { onMount } from "solid-js";
 import gsap from "gsap";
 import { Github, Code, Database, Cloud, Palette } from "lucide-solid";
-import { siHtml5, siCss, siJavascript, siTypescript, siVuedotjs, siNextdotjs, siNuxt, siReact, siCloudflare, siSqlite, siMongodb, siTailwindcss, siGit, siSass } from "simple-icons";
+import { siHtml5, siCss, siJavascript, siTypescript, siVuedotjs, siNextdotjs, siNuxt, siReact, siCloudflare, siSqlite, siMongodb, siTailwindcss, siGit, siSass, siExpo } from "simple-icons";
 
 // Simple Icon Component
 const SimpleIcon = (props: { icon: any; size?: number; class?: string }) => {
@@ -47,6 +47,7 @@ export default function About() {
   let mongodbRef: HTMLDivElement | undefined;
   let cloudflareRef: HTMLDivElement | undefined;
   let tailwindRef: HTMLDivElement | undefined;
+  let expoRef: HTMLDivElement | undefined;
 
   onMount(() => {
     const paragraphs = [paragraph1Ref, paragraph2Ref, paragraph3Ref].filter(Boolean) as HTMLParagraphElement[];
@@ -116,6 +117,7 @@ export default function About() {
     createHoverEffect(nuxtRef, 'Nuxt.js');
     createHoverEffect(reactRef, 'React');
     createHoverEffect(reactNativeRef, 'React Native');
+    createHoverEffect(expoRef, 'Expo Go');
     createHoverEffect(sqliteRef, 'SQLite');
     createHoverEffect(mongodbRef, 'MongoDB');
     createHoverEffect(cloudflareRef, 'Cloudflare');
@@ -150,7 +152,7 @@ export default function About() {
             {/* Technologies Icons */}
             <div ref={el => technologiesRef = el} class="mt-12">
               {/* Tüm Teknoloji Iconları */}
-              <div class="grid grid-cols-4 md:grid-cols-8 gap-4">
+              <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
                 <div ref={el => html5Ref = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siHtml5} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">HTML</span>
@@ -198,6 +200,10 @@ export default function About() {
                 <div ref={el => reactNativeRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siReact} class="text-white" />
                   <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">React Native</span>
+                </div>
+                <div ref={el => expoRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
+                  <SimpleIcon icon={siExpo} class="text-white" />
+                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Expo Go</span>
                 </div>
                 <div ref={el => sqliteRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
                   <SimpleIcon icon={siSqlite} class="text-white" />

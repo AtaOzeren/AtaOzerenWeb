@@ -44,6 +44,8 @@ export const en: Locale = {
         appShowcaseDesc: "Mobile and web applications I've developed",
         visitSite: "Visit Site",
         developedBy: "developed by",
+        scrollToApps: "Go to Apps",
+        continueReading: "Continue Reading",
         projectTypes: {
             corporate: "Corporate",
             ecommerce: "E-Commerce",

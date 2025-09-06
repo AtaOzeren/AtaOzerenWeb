@@ -26,18 +26,54 @@ const Hero: Component = () => {
         const nameElement = nameRef();
         if (!nameElement) return;
 
-        // Convert name string to individual letter spans
-        const letterSpans = HERO_NAME.split('').map((letter, index) => {
-            if (letter === ' ') {
-                return `<span class="inline-block">&nbsp;</span>`;
-            }
-            return `<span class="inline-block letter-${index}">${letter}</span>`;
-        }).join('');
+        // Check if we're on mobile/tablet (screen width < 1024px)
+        const isMobileOrTablet = window.innerWidth < 1024;
 
-        nameElement.innerHTML = letterSpans;
+        let nameMarkup: string;
+
+        if (isMobileOrTablet) {
+            // Mobile/Tablet: Split into two lines (ATA / OZEREN)
+            const firstName = "ATA";
+            const lastName = "OZEREN";
+
+            const firstLineSpans = firstName.split('').map((letter, index) =>
+                `<span class="inline-block letter-${index}">${letter}</span>`
+            ).join('');
+
+            const secondLineSpans = lastName.split('').map((letter, index) =>
+                `<span class="inline-block letter-${index + firstName.length}">${letter}</span>`
+            ).join('');
+
+            nameMarkup = `
+                <div class="flex flex-col items-center leading-none lg:hidden">
+                    <div class="mb-1">${firstLineSpans}</div>
+                    <div>${secondLineSpans}</div>
+                </div>
+                <div class="hidden lg:block">
+                    ${HERO_NAME.split('').map((letter, index) => {
+                if (letter === ' ') {
+                    return `<span class="inline-block">&nbsp;</span>`;
+                }
+                return `<span class="inline-block letter-${index}">${letter}</span>`;
+            }).join('')}
+                </div>
+            `;
+        } else {
+            // Desktop: Single line
+            const letterSpans = HERO_NAME.split('').map((letter, index) => {
+                if (letter === ' ') {
+                    return `<span class="inline-block">&nbsp;</span>`;
+                }
+                return `<span class="inline-block letter-${index}">${letter}</span>`;
+            }).join('');
+
+            nameMarkup = letterSpans;
+        }
+
+        nameElement.innerHTML = nameMarkup;
 
         // Get all letter elements for animation
-        const letterElements = nameElement.querySelectorAll('span');
+        const letterElements = nameElement.querySelectorAll('span[class*="letter-"]');
 
         // Set initial state: hidden and positioned below
         gsap.set(letterElements, {
@@ -60,10 +96,26 @@ const Hero: Component = () => {
             },
             delay: ANIMATION_CONFIG.initialDelay
         });
+
+        // Re-initialize animation on window resize
+        const handleResize = () => {
+            const newIsMobileOrTablet = window.innerWidth < 1024;
+            if (newIsMobileOrTablet !== isMobileOrTablet) {
+                setTimeout(() => initializeNameAnimation(), 100);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup function for resize listener
+        return () => window.removeEventListener('resize', handleResize);
     };
 
     onMount(() => {
-        initializeNameAnimation();
+        const cleanup = initializeNameAnimation();
+
+        // Return cleanup function if exists
+        return cleanup;
     });
 
     return (
@@ -79,8 +131,7 @@ const Hero: Component = () => {
                 <div class="mb-8">
                     {/* Subtitle: "I AM" */}
                     <p
-                        class={`text-lg md:text-xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-4 opacity-90 text-center max-w-4xl mx-auto`}
-                        style="transform: translateX(-300px);"
+                        class={`text-sm sm:text-lg md:text-xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-4 opacity-90 text-center max-w-4xl mx-auto lg:transform lg:translate-x-[-300px]`}
                     >
                         I AM
                     </p>
@@ -88,7 +139,7 @@ const Hero: Component = () => {
                     {/* Main Hero Name */}
                     <h1
                         ref={setNameRef}
-                        class={`text-6xl md:text-8xl lg:text-9xl font-bold mb-6 ${THEME.colors.text.primary}`}
+                        class={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold mb-6 ${THEME.colors.text.primary} text-center`}
                         style={{ perspective: "1000px" }}
                     >
                         {/* Content will be populated by GSAP animation */}
@@ -96,8 +147,7 @@ const Hero: Component = () => {
 
                     {/* Role Description */}
                     <p
-                        class={`text-base md:text-lg font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto`}
-                        style="transform: translateX(220px);"
+                        class={`text-xs sm:text-sm md:text-base lg:text-lg font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto lg:transform lg:translate-x-[220px]`}
                     >
                         Full Stack Developer
                     </p>

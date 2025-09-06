@@ -125,8 +125,9 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
     });
 
     return (
-        <div class="fixed left-4 bottom-4 z-50">
-            <div class="flex flex-col gap-3">
+        <div class="fixed left-4 bottom-4 z-50 lg:block">
+            {/* Desktop: Sol alt köşede dikey */}
+            <div class="hidden lg:flex flex-col gap-3">
                 {links().map((link) => (
                     <a
                         href={link.url}
@@ -149,6 +150,34 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
                         </svg>
                     </a>
                 ))}
+            </div>
+
+            {/* Mobile/Tablet: Alt ortada yatay */}
+            <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 lg:hidden">
+                <div class="flex flex-row gap-4 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+                    {links().map((link) => (
+                        <a
+                            href={link.url}
+                            target={link.name === 'mail' ? '_self' : '_blank'}
+                            rel={link.name === 'mail' ? '' : 'noopener noreferrer'}
+                            class="social-link relative flex items-center justify-center w-10 h-10 cursor-pointer overflow-hidden"
+                            title={link.label}
+                            aria-label={link.label}
+                        >
+                            {/* Background element for GSAP */}
+                            <div class="social-bg absolute inset-0 backdrop-blur-sm border rounded-full" />
+
+                            {/* Icon element for GSAP */}
+                            <svg
+                                class="social-icon relative w-5 h-5 text-white z-10"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path d={link.icon} />
+                            </svg>
+                        </a>
+                    ))}
+                </div>
             </div>
         </div>
     );

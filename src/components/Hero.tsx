@@ -131,7 +131,7 @@ const Hero: Component = () => {
                 <div class="mb-8">
                     {/* Subtitle: "I AM" */}
                     <p
-                        class={`text-sm sm:text-lg md:text-xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-4 opacity-90 text-center max-w-4xl mx-auto lg:transform lg:translate-x-[-300px]`}
+                        class={`text-base sm:text-xl md:text-2xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-4 opacity-90 text-center max-w-4xl mx-auto lg:transform lg:translate-x-[-300px]`}
                     >
                         I AM
                     </p>
@@ -139,7 +139,7 @@ const Hero: Component = () => {
                     {/* Main Hero Name */}
                     <h1
                         ref={setNameRef}
-                        class={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold mb-6 ${THEME.colors.text.primary} text-center`}
+                        class={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 ${THEME.colors.text.primary} text-center`}
                         style={{ perspective: "1000px" }}
                     >
                         {/* Content will be populated by GSAP animation */}
@@ -147,7 +147,7 @@ const Hero: Component = () => {
 
                     {/* Role Description */}
                     <p
-                        class={`text-xs sm:text-sm md:text-base lg:text-lg font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto lg:transform lg:translate-x-[220px]`}
+                        class={`text-sm sm:text-base md:text-lg lg:text-xl font-extralight uppercase tracking-widest ${THEME.colors.text.secondary} mb-12 opacity-90 text-center max-w-4xl mx-auto lg:transform lg:translate-x-[220px]`}
                     >
                         Full Stack Developer
                     </p>

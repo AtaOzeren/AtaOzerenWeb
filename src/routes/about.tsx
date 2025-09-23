@@ -29,6 +29,7 @@ export default function About() {
   let paragraph2Ref: HTMLParagraphElement | undefined;
   let paragraph3Ref: HTMLParagraphElement | undefined;
   let technologiesRef: HTMLDivElement | undefined;
+  let profileImageRef: HTMLImageElement | undefined;
 
   // Icon refs
   let html5Ref: HTMLDivElement | undefined;
@@ -50,6 +51,54 @@ export default function About() {
   let expoRef: HTMLDivElement | undefined;
 
   onMount(() => {
+    // Profile image animation
+    if (profileImageRef) {
+      gsap.fromTo(profileImageRef,
+        {
+          opacity: 0,
+          scale: 0.5,
+          y: -50,
+          rotationY: 180
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          rotationY: 0,
+          duration: 1.5,
+          ease: "back.out(1.7)"
+        }
+      );
+
+      // Hover effects for profile image
+      profileImageRef.addEventListener('mouseenter', () => {
+        if (profileImageRef) {
+          gsap.to(profileImageRef, {
+            scale: 1.1,
+            rotationY: 10,
+            rotationX: 5,
+            boxShadow: "0 25px 50px rgba(255,255,255,0.3)",
+            duration: 0.4,
+            ease: "power2.out"
+          });
+        }
+      });
+
+      profileImageRef.addEventListener('mouseleave', () => {
+        if (profileImageRef) {
+          gsap.to(profileImageRef, {
+            scale: 1,
+            rotationY: 0,
+            rotationX: 0,
+            boxShadow: "0 0 0 rgba(255,255,255,0)",
+            duration: 0.4,
+            ease: "power2.out"
+          });
+        }
+      });
+    }
+
+    // Paragraphs animation with delay
     const paragraphs = [paragraph1Ref, paragraph2Ref, paragraph3Ref].filter(Boolean) as HTMLParagraphElement[];
     gsap.fromTo(paragraphs,
       {
@@ -61,7 +110,8 @@ export default function About() {
         y: 0,
         duration: 1,
         stagger: 0.3,
-        ease: "power2.out"
+        ease: "power2.out",
+        delay: 0.8
       }
     );
 
@@ -134,6 +184,17 @@ export default function About() {
       {/* Content overlay */}
       <div class="relative z-10 container mx-auto px-6 py-12">
         <div class="max-w-4xl mx-auto">
+
+          {/* Profile Image */}
+          <div class="flex justify-center mb-12">
+            <img
+              ref={el => profileImageRef = el}
+              src="/project-images/me/me.jpg"
+              alt="Ata Özeren"
+              class="w-64 h-64 md:w-72 md:h-72 object-cover rounded-full border-4 border-white/20 shadow-2xl select-none cursor-pointer transition-all duration-300"
+              style="transform-style: preserve-3d;"
+            />
+          </div>
 
           {/* About Content */}
           <div >

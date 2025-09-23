@@ -16,7 +16,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: 'https://crm.sanerkonutlari.com/',
-        image: '/project-images/SanerCRM.jpeg',
+        image: '/project-images/project-web/SanerCRM.jpeg',
         description: 'Modern mimarlık hizmetleri sunan kurumsal web sitesi',
         type: 'crm'
     },
@@ -26,7 +26,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: 'https://www.erdemlimimarlik.com/',
-        image: '/project-images/ErdemliMimarlik.jpg',
+        image: '/project-images/project-web/ErdemliMimarlik.jpg',
         description: 'Modern mimarlık hizmetleri sunan kurumsal web sitesi',
         type: 'corporate'
     },
@@ -36,7 +36,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['React', 'Next.js', 'Tailwind CSS'],
         url: '#',
-        image: '/project-images/EgeMimarlik.jpg',
+        image: '/project-images/project-web/EgeMimarlik.jpg',
         description: 'Profesyonel mimarlık ve tasarım hizmetleri',
         type: 'corporate'
     },
@@ -46,7 +46,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['Vue.js', 'Nuxt.js', 'SCSS'],
         url: '#',
-        image: '/project-images/EjeStudio.jpg',
+        image: '/project-images/project-web/EjeStudio.jpg',
         description: 'Kreatif tasarım stüdyosu web sitesi',
         type: 'ecommerce'
     },
@@ -56,7 +56,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['React', 'TypeScript', 'Tailwind CSS'],
         url: '#',
-        image: '/project-images/DeltaFidancilik.jpg',
+        image: '/project-images/project-web/DeltaFidancilik.jpg',
         description: 'Fidancılık ve peyzaj hizmetleri platformu',
         type: 'corporate'
     },
@@ -66,7 +66,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
-        image: '/project-images/SanerKonutlari.jpg',
+        image: '/project-images/project-web/SanerKonutlari.jpg',
         description: 'Gayrimenkul ve konut projeleri sitesi',
         type: 'corporate'
     },
@@ -76,7 +76,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['React', 'Next.js', 'Styled Components'],
         url: '#',
-        image: '/project-images/Savuncell.jpg',
+        image: '/project-images/project-web/Savuncell.jpg',
         description: 'Teknoloji ve inovasyon odaklı platform',
         type: 'corporate'
     },
@@ -86,7 +86,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['Vue.js', 'Nuxt.js', 'Bootstrap'],
         url: '#',
-        image: '/project-images/TuranlarHolding.jpg',
+        image: '/project-images/project-web/TuranlarHolding.jpg',
         description: 'Holding şirketi kurumsal web sitesi',
         type: 'corporate'
     },
@@ -96,7 +96,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         company: 'SyconX',
         technologies: ['React', 'TypeScript', 'Material-UI'],
         url: '#',
-        image: '/project-images/YktGlobal.jpg',
+        image: '/project-images/project-web/YKTGlobal.jpg',
         description: 'Global ticaret ve lojistik platformu',
         type: 'corporate'
     }

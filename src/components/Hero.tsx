@@ -139,7 +139,7 @@ const Hero: Component = () => {
                     {/* Main Hero Name */}
                     <h1
                         ref={setNameRef}
-                        class={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 ${THEME.colors.text.primary} text-center`}
+                        class={`text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-9xl font-bold mb-6 ${THEME.colors.text.primary} text-center`}
                         style={{ perspective: "1000px" }}
                     >
                         {/* Content will be populated by GSAP animation */}

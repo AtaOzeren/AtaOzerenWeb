@@ -1,3 +1,5 @@
+export type ProjectCategory = 'backend' | 'frontend' | 'mobile' | 'crm' | 'mcp';
+
 export interface ProjectDetail {
     id: string;
     name: string;
@@ -6,20 +8,20 @@ export interface ProjectDetail {
     url: string;
     image: string;
     description?: string;
-    type: 'corporate' | 'ecommerce' | 'crm';
+    category: ProjectCategory;
 }
 
+// Category configuration with icons and colors
+export const PROJECT_CATEGORIES = [
+    { id: 'frontend', icon: 'layout', gradient: 'from-blue-500 to-cyan-500' },
+    { id: 'backend', icon: 'server', gradient: 'from-purple-500 to-pink-500' },
+    { id: 'mobile', icon: 'smartphone', gradient: 'from-green-500 to-emerald-500' },
+    { id: 'crm', icon: 'users', gradient: 'from-orange-500 to-amber-500' },
+    { id: 'mcp', icon: 'cpu', gradient: 'from-rose-500 to-red-500' },
+] as const;
+
 export const PROJECT_DETAILS: ProjectDetail[] = [
-    {
-        id: 'sanercrm',
-        name: 'Saner CRM',
-        company: 'SyconX',
-        technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
-        url: 'https://crm.sanerkonutlari.com/',
-        image: '/project-images/project-web/SanerCRM.jpeg',
-        description: 'Modern mimarlık hizmetleri sunan kurumsal web sitesi',
-        type: 'crm'
-    },
+    // Frontend Projects
     {
         id: 'erdemli',
         name: 'Erdemli Mimarlık',
@@ -28,7 +30,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: 'https://www.erdemlimimarlik.com/',
         image: '/project-images/project-web/ErdemliMimarlik.jpg',
         description: 'Modern mimarlık hizmetleri sunan kurumsal web sitesi',
-        type: 'corporate'
+        category: 'frontend'
     },
     {
         id: 'ege',
@@ -38,7 +40,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/EgeMimarlik.jpg',
         description: 'Profesyonel mimarlık ve tasarım hizmetleri',
-        type: 'corporate'
+        category: 'frontend'
     },
     {
         id: 'eje',
@@ -48,7 +50,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/EjeStudio.jpg',
         description: 'Kreatif tasarım stüdyosu web sitesi',
-        type: 'ecommerce'
+        category: 'frontend'
     },
     {
         id: 'delta',
@@ -58,7 +60,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/DeltaFidancilik.jpg',
         description: 'Fidancılık ve peyzaj hizmetleri platformu',
-        type: 'corporate'
+        category: 'frontend'
     },
     {
         id: 'saner',
@@ -68,7 +70,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/SanerKonutlari.jpg',
         description: 'Gayrimenkul ve konut projeleri sitesi',
-        type: 'corporate'
+        category: 'frontend'
     },
     {
         id: 'savuncell',
@@ -78,7 +80,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/Savuncell.jpg',
         description: 'Teknoloji ve inovasyon odaklı platform',
-        type: 'corporate'
+        category: 'frontend'
     },
     {
         id: 'turanlar',
@@ -88,7 +90,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/TuranlarHolding.jpg',
         description: 'Holding şirketi kurumsal web sitesi',
-        type: 'corporate'
+        category: 'frontend'
     },
     {
         id: 'ykt',
@@ -98,6 +100,25 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/YKTGlobal.jpg',
         description: 'Global ticaret ve lojistik platformu',
-        type: 'corporate'
-    }
+        category: 'frontend'
+    },
+    // CRM Projects
+    {
+        id: 'sanercrm',
+        name: 'Saner CRM',
+        company: 'SyconX',
+        technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
+        url: 'https://crm.sanerkonutlari.com/',
+        image: '/project-images/project-web/SanerCRM.jpeg',
+        description: 'Müşteri ilişkileri yönetim sistemi',
+        category: 'crm'
+    },
+    // Backend Projects - Placeholder (user will add)
+    // Mobile Projects - Placeholder (user will add)
+    // MCP Projects - Placeholder (user will add)
 ];
+
+// Helper function to get projects by category
+export const getProjectsByCategory = (category: ProjectCategory): ProjectDetail[] => {
+    return PROJECT_DETAILS.filter(project => project.category === category);
+};

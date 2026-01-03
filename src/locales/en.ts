@@ -46,6 +46,15 @@ export const en: Locale = {
         developedBy: "developed by",
         scrollToApps: "Go to Apps",
         continueReading: "Continue Reading",
+        noProjects: "No projects yet",
+        noProjectsDesc: "Projects in this category will be added soon.",
+        categories: {
+            frontend: "Frontend",
+            backend: "Backend",
+            mobile: "Mobile",
+            crm: "CRM",
+            mcp: "MCP"
+        },
         projectTypes: {
             corporate: "Corporate",
             ecommerce: "E-Commerce",

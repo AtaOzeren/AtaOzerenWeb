@@ -44,6 +44,15 @@ export const tr = {
         developedBy: "tarafından geliştirildi",
         scrollToApps: "Uygulamalara Geç",
         continueReading: "Devamını Gör",
+        noProjects: "Henüz proje yok",
+        noProjectsDesc: "Bu kategorideki projeler yakında eklenecek.",
+        categories: {
+            frontend: "Frontend",
+            backend: "Backend",
+            mobile: "Mobil",
+            crm: "CRM",
+            mcp: "MCP"
+        },
         projectTypes: {
             corporate: "Kurumsal",
             ecommerce: "E-Ticaret",

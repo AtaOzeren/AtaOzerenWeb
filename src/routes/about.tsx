@@ -231,7 +231,8 @@ export default function About() {
 
               {/* Frontend & Styling */}
               <div class="group">
-                <div class="mb-4">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-white/90 rounded-full"></div>
                   <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Frontend & Styling</h3>
                 </div>
                 <div class="flex flex-wrap gap-3">
@@ -270,7 +271,8 @@ export default function About() {
 
               {/* Frameworks */}
               <div class="group">
-                <div class="mb-4">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-white/90 rounded-full"></div>
                   <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Frameworks</h3>
                 </div>
                 <div class="flex flex-wrap gap-3">
@@ -299,7 +301,8 @@ export default function About() {
 
               {/* Mobile Development */}
               <div class="group">
-                <div class="mb-4">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-white/90 rounded-full"></div>
                   <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Mobile Development</h3>
                 </div>
                 <div class="flex flex-wrap gap-3">
@@ -318,7 +321,8 @@ export default function About() {
 
               {/* Database & Cloud */}
               <div class="group">
-                <div class="mb-4">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-white/90 rounded-full"></div>
                   <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Database & Cloud</h3>
                 </div>
                 <div class="flex flex-wrap gap-3">
@@ -342,7 +346,8 @@ export default function About() {
 
               {/* Tools & Version Control */}
               <div class="group">
-                <div class="mb-4">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-white/90 rounded-full"></div>
                   <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Tools & Version Control</h3>
                 </div>
                 <div class="flex flex-wrap gap-3">

@@ -1,9 +1,9 @@
 import { Title } from "@solidjs/meta";
 import { useI18n } from "~/contexts/I18nContext";
 import AnimatedBackground from "~/components/AnimatedBackground";
-import { onMount, createSignal } from "solid-js";
+import { onMount, createSignal, onCleanup } from "solid-js";
 import gsap from "gsap";
-import { Mail, Phone, MapPin, Copy, Check, Send } from "lucide-solid";
+import { Mail, Phone, MapPin, Copy, Check, Send, Clock } from "lucide-solid";
 
 export default function Contact() {
     const { t } = useI18n();
@@ -14,6 +14,16 @@ export default function Contact() {
 
     const [emailCopied, setEmailCopied] = createSignal(false);
     const [phoneCopied, setPhoneCopied] = createSignal(false);
+    const [time, setTime] = createSignal("");
+
+    const updateTime = () => {
+        const now = new Date();
+        setTime(now.toLocaleTimeString('tr-TR', {
+            timeZone: 'Europe/Istanbul',
+            hour: '2-digit',
+            minute: '2-digit'
+        }));
+    };
 
     const copyToClipboard = async (text: string, type: 'email' | 'phone') => {
         try {
@@ -74,6 +84,12 @@ export default function Contact() {
                 }
             );
         }
+
+
+        // Clock timer
+        updateTime();
+        const timer = setInterval(updateTime, 1000);
+        onCleanup(() => clearInterval(timer));
     });
 
     return (
@@ -119,10 +135,19 @@ export default function Contact() {
                                 </a>
                             </div>
 
-                            {/* Location */}
-                            <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
-                                <MapPin size={18} class="text-white/60" />
-                                <span class="text-white/80 text-sm">{t('contact.location')}</span>
+                            {/* Location & Time */}
+                            <div class="flex flex-wrap gap-3 justify-center md:justify-end">
+                                {/* Location */}
+                                <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+                                    <MapPin size={18} class="text-white/60" />
+                                    <span class="text-white/80 text-sm">{t('contact.location')}</span>
+                                </div>
+
+                                {/* Time */}
+                                <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
+                                    <Clock size={18} class="text-white/60" />
+                                    <span class="text-white/80 text-sm">{time()} (TR)</span>
+                                </div>
                             </div>
                         </div>
                     </div>

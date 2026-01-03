@@ -4,7 +4,7 @@ import AnimatedBackground from "~/components/AnimatedBackground";
 import { onMount } from "solid-js";
 import gsap from "gsap";
 import { Github, Code, Database, Cloud, Palette } from "lucide-solid";
-import { siHtml5, siCss, siJavascript, siTypescript, siVuedotjs, siNextdotjs, siNuxt, siReact, siCloudflare, siSqlite, siMongodb, siTailwindcss, siGit, siSass, siExpo } from "simple-icons";
+import { siHtml5, siCss, siJavascript, siTypescript, siVuedotjs, siNextdotjs, siNuxt, siReact, siCloudflare, siSqlite, siMongodb, siTailwindcss, siGit, siSass, siExpo, siMysql, siPython } from "simple-icons";
 
 // Simple Icon Component
 const SimpleIcon = (props: { icon: any; size?: number; class?: string }) => {
@@ -49,6 +49,9 @@ export default function About() {
   let cloudflareRef: HTMLDivElement | undefined;
   let tailwindRef: HTMLDivElement | undefined;
   let expoRef: HTMLDivElement | undefined;
+  let mysqlRef: HTMLDivElement | undefined;
+  let d1Ref: HTMLDivElement | undefined;
+  let pythonRef: HTMLDivElement | undefined;
 
   onMount(() => {
     // Profile image animation
@@ -134,44 +137,40 @@ export default function About() {
       );
     }
 
-    // Hover efektleri için GSAP
-    const createHoverEffect = (iconRef: HTMLDivElement | undefined, text: string) => {
+    // Hover efektleri için GSAP - sadece scale efekti
+    const createHoverEffect = (iconRef: HTMLDivElement | undefined) => {
       if (!iconRef) return;
 
-      const icon = iconRef.querySelector('svg');
-      const textElement = iconRef.querySelector('.tech-text');
+      iconRef.addEventListener('mouseenter', () => {
+        gsap.to(iconRef, { scale: 1.1, duration: 0.3, ease: "power2.out" });
+      });
 
-      if (icon && textElement) {
-        iconRef.addEventListener('mouseenter', () => {
-          gsap.to(icon, { opacity: 0, scale: 0.8, duration: 0.3, ease: "power2.out" });
-          gsap.to(textElement, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
-        });
-
-        iconRef.addEventListener('mouseleave', () => {
-          gsap.to(icon, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
-          gsap.to(textElement, { opacity: 0, scale: 0.8, duration: 0.3, ease: "power2.out" });
-        });
-      }
+      iconRef.addEventListener('mouseleave', () => {
+        gsap.to(iconRef, { scale: 1, duration: 0.3, ease: "power2.out" });
+      });
     };
 
     // Tüm iconlara hover efekti ekle
-    createHoverEffect(html5Ref, 'HTML');
-    createHoverEffect(cssRef, 'CSS');
-    createHoverEffect(sassRef, 'SCSS');
-    createHoverEffect(jsRef, 'JavaScript');
-    createHoverEffect(tsRef, 'TypeScript');
-    createHoverEffect(gitRef, 'Git');
-    createHoverEffect(githubRef, 'GitHub');
-    createHoverEffect(vueRef, 'Vue');
-    createHoverEffect(nextRef, 'Next.js');
-    createHoverEffect(nuxtRef, 'Nuxt.js');
-    createHoverEffect(reactRef, 'React');
-    createHoverEffect(reactNativeRef, 'React Native');
-    createHoverEffect(expoRef, 'Expo Go');
-    createHoverEffect(sqliteRef, 'SQLite');
-    createHoverEffect(mongodbRef, 'MongoDB');
-    createHoverEffect(cloudflareRef, 'Cloudflare');
-    createHoverEffect(tailwindRef, 'Tailwind CSS');
+    createHoverEffect(html5Ref);
+    createHoverEffect(cssRef);
+    createHoverEffect(sassRef);
+    createHoverEffect(jsRef);
+    createHoverEffect(tsRef);
+    createHoverEffect(gitRef);
+    createHoverEffect(githubRef);
+    createHoverEffect(vueRef);
+    createHoverEffect(nextRef);
+    createHoverEffect(nuxtRef);
+    createHoverEffect(reactRef);
+    createHoverEffect(reactNativeRef);
+    createHoverEffect(expoRef);
+    createHoverEffect(sqliteRef);
+    createHoverEffect(mongodbRef);
+    createHoverEffect(cloudflareRef);
+    createHoverEffect(tailwindRef);
+    createHoverEffect(mysqlRef);
+    createHoverEffect(d1Ref);
+    createHoverEffect(pythonRef);
   });
 
   return (
@@ -229,6 +228,28 @@ export default function About() {
             {/* Technologies Section */}
             <div ref={el => technologiesRef = el} class="mt-16 space-y-8">
 
+              {/* Programming Languages */}
+              <div class="group">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-white/90 rounded-full"></div>
+                  <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Programming Languages</h3>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <div class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siJavascript} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">JavaScript</span>
+                  </div>
+                  <div class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siTypescript} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">TypeScript</span>
+                  </div>
+                  <div ref={el => pythonRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siPython} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">Python</span>
+                  </div>
+                </div>
+              </div>
+
               {/* Frontend & Styling */}
               <div class="group">
                 <div class="flex items-center gap-3 mb-4">
@@ -239,32 +260,32 @@ export default function About() {
                   <div ref={el => html5Ref = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siHtml5} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">HTML</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => cssRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siCss} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">CSS</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => sassRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siSass} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">SCSS</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => tailwindRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siTailwindcss} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">Tailwind</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => jsRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siJavascript} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">JavaScript</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => tsRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siTypescript} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">TypeScript</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                 </div>
               </div>
@@ -279,22 +300,22 @@ export default function About() {
                   <div ref={el => reactRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siReact} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">React</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => vueRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siVuedotjs} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">Vue.js</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => nextRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siNextdotjs} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">Next.js</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => nuxtRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siNuxt} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">Nuxt.js</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                 </div>
               </div>
@@ -309,12 +330,12 @@ export default function About() {
                   <div ref={el => reactNativeRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siReact} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">React Native</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => expoRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siExpo} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">Expo</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                 </div>
               </div>
@@ -329,17 +350,22 @@ export default function About() {
                   <div ref={el => sqliteRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siSqlite} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">SQLite</span>
-                    <span class="tech-text hidden"></span>
                   </div>
                   <div ref={el => mongodbRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siMongodb} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">MongoDB</span>
-                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => mysqlRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siMysql} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">MySQL</span>
+                  </div>
+                  <div ref={el => d1Ref = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <Database size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">D1</span>
                   </div>
                   <div ref={el => cloudflareRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siCloudflare} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">Cloudflare</span>
-                    <span class="tech-text hidden"></span>
                   </div>
                 </div>
               </div>
@@ -354,12 +380,12 @@ export default function About() {
                   <div ref={el => gitRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <SimpleIcon icon={siGit} size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">Git</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                   <div ref={el => githubRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                     <Github size={18} class="text-white/80" />
                     <span class="text-white/80 text-sm font-medium">GitHub</span>
-                    <span class="tech-text hidden"></span>
+
                   </div>
                 </div>
               </div>

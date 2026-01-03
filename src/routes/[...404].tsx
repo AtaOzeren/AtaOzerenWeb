@@ -4,6 +4,7 @@ import { useI18n } from "~/contexts/I18nContext";
 import AnimatedBackground from "~/components/AnimatedBackground";
 import { createSignal, Show } from "solid-js";
 import { Gamepad } from "lucide-solid";
+import Button from "~/components/Button";
 
 export default function NotFound() {
   const { t } = useI18n();
@@ -23,32 +24,40 @@ export default function NotFound() {
 
           {/* Left Column: Text & Actions */}
           <div class="text-center lg:text-left order-2 lg:order-1">
-            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 tracking-wider">
-              404
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+              404 Not Found
             </h1>
-            <h2 class="text-2xl md:text-4xl font-semibold text-white/90 mb-6">
-              Not Found
-            </h2>
 
             <p class="text-white/70 text-lg md:text-xl mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              {t('notFound.doomMessage')}
+              {t('notFound.doomMessage').split('DOOM').map((part, i, arr) => (
+                <>
+                  {part}
+                  {i < arr.length - 1 && (
+                    <span class="inline-flex items-center text-red-400 font-bold mx-1">
+                      DOOM
+                      <Gamepad size={20} class="ml-1" />
+                    </span>
+                  )}
+                </>
+              ))}
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a
+              <Button
+                variant="ata-black"
                 href="/"
-                class="px-8 py-3 bg-white text-black font-bold rounded-full hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-white/20"
               >
                 {t('nav.home')}
-              </a>
+              </Button>
 
-              <button
+              <Button
+                variant="ata-trans"
                 onClick={() => setIsPlaying(true)}
-                class="flex items-center gap-2 px-8 py-3 bg-red-600/20 text-red-400 border border-red-600/50 font-bold rounded-full hover:bg-red-600 hover:text-white transition-all duration-300"
+                class="!border-red-600/50 !text-red-400 hover:!bg-red-600 hover:!text-white flex items-center gap-2"
               >
                 <Gamepad size={20} />
                 Play DOOM
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -57,7 +66,7 @@ export default function NotFound() {
             <div class="relative w-full aspect-[4/3] max-w-xl bg-black/40 rounded-xl border-4 border-white/10 overflow-hidden shadow-2xl backdrop-blur-sm">
               <Show when={!isPlaying()} fallback={
                 <iframe
-                  src="https://dos.zone/player/?bundleUrl=https%3A%2F%2Fcdn.dos.zone%2Fcustom%2Fdos%2Fdoom.jsdos?anonymous=1"
+                  src="https://archive.org/embed/doom-play"
                   class="w-full h-full border-0"
                   allowfullscreen
                 />
@@ -68,7 +77,7 @@ export default function NotFound() {
                     alt="404 Not Found Cat"
                     class="max-w-full max-h-[70%] object-contain rounded-lg mb-4"
                   />
-                  <p class="text-white/40 text-sm">Waiting for action...</p>
+
                 </div>
               </Show>
             </div>

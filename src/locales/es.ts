@@ -77,11 +77,15 @@ export const es: Locale = {
         subtitle: "Ponte en contacto conmigo",
         name: "Tu nombre",
         email: "Correo electrónico",
+        phone: "Teléfono",
         message: "Tu mensaje",
         send: "Enviar",
         sending: "Enviando...",
         success: "¡Tu mensaje ha sido enviado con éxito!",
         error: "Ha ocurrido un error. Por favor, inténtalo de nuevo.",
+        clickToEmail: "Haz clic para enviar un correo",
+        clickToCall: "Haz clic para llamar",
+        location: "Turquía",
     },
 
     // Footer

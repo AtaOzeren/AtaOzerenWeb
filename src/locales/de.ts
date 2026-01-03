@@ -77,11 +77,15 @@ export const de: Locale = {
         subtitle: "Nehmen Sie Kontakt mit mir auf",
         name: "Ihr Name",
         email: "E-Mail",
+        phone: "Telefon",
         message: "Ihre Nachricht",
         send: "Senden",
         sending: "Wird gesendet...",
         success: "Ihre Nachricht wurde erfolgreich gesendet!",
         error: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+        clickToEmail: "Klicken Sie, um eine E-Mail zu senden",
+        clickToCall: "Klicken Sie, um anzurufen",
+        location: "Türkei",
     },
 
     // Footer

@@ -76,11 +76,15 @@ export const en: Locale = {
         subtitle: "Get in touch with me",
         name: "Your Name",
         email: "Email",
+        phone: "Phone",
         message: "Your Message",
         send: "Send",
         sending: "Sending...",
         success: "Your message has been sent successfully!",
         error: "An error occurred. Please try again.",
+        clickToEmail: "Click to send email",
+        clickToCall: "Click to call",
+        location: "Turkey",
     },
 
     // Footer

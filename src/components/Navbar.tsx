@@ -34,7 +34,7 @@ const HAMBURGER_ANIMATION = {
 const NAVIGATION_LINKS = [
     { href: '/about', key: 'nav.about' },
     { href: '/projects', key: 'nav.projects' },
-    { href: '#contact', key: 'nav.contact' },
+    { href: '/contact', key: 'nav.contact' },
 ];
 
 const Navbar: Component = () => {

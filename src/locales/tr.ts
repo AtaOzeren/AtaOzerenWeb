@@ -74,11 +74,15 @@ export const tr = {
         subtitle: "Benimle iletişime geçin",
         name: "Adınız",
         email: "E-posta",
+        phone: "Telefon",
         message: "Mesajınız",
         send: "Gönder",
         sending: "Gönderiliyor...",
         success: "Mesajınız başarıyla gönderildi!",
         error: "Bir hata oluştu. Lütfen tekrar deneyin.",
+        clickToEmail: "Mail göndermek için tıklayın",
+        clickToCall: "Aramak için tıklayın",
+        location: "Türkiye",
     },
 
     // Footer

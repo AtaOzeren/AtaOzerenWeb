@@ -31,7 +31,11 @@ export const de: Locale = {
             paragraph2: "Ich habe Erfahrung durch die Arbeit an nationalen und internationalen Projekten gesammelt. Derzeit arbeite ich als Frontend-Entwickler bei SyconX, wo ich mich auf skalierbare und benutzerfreundliche Oberflächen konzentriere. Zuvor arbeitete ich als Remote Full-Stack-Entwickler bei Martsys Software auf Projektbasis und als Entwickler bei YeliApp.",
             paragraph3: "Ich studiere Management-Informationssysteme an der Anadolu-Universität. Außerdem habe ich einen Bachelor in Physik und einen Associate-Abschluss in Computerprogrammierung von der Atatürk-Universität. Ich habe auch den CS50 Web Programming Kurs der Harvard University abgeschlossen und Python-Schulungen an der METU erhalten."
         },
-        technologies: "Technologien, die ich verwende"
+        technologies: "Technologien, die ich verwende",
+        github: {
+            contributions: "GitHub Beiträge",
+            viewProfile: "GitHub Profil ansehen"
+        }
     },
 
     // Projects Section

@@ -29,7 +29,11 @@ export const tr = {
             paragraph2: "Şuanda SyconX yazılım firmasında Frontend developer olarak çalışıyorum. Daha öncesinde Martsys Software'da uzaktan proje bazlı Full stack olarak çalıştım ve YeliApp'te ofis ortamında çalışarak projeler geliştirdim.",
             paragraph3: "Eğitimime Anadolu Üniversitesi'nde Yönetim Bilişim Sistemleri (Lisans) bölümünde devam ediyorum ve Atatürk Üniversitesi'nden Fizik (Lisans) ve Bilgisayar Programcılığı (Ön Lisans) alanlarında diplomalarım bulunuyor. Harvard Üniversitesi'nin CS50 Web Programming sertifikasına sahibim ve ODTÜ 'den Python üzerine eğitimler aldım."
         },
-        technologies: "Kullandığım Teknolojiler"
+        technologies: "Kullandığım Teknolojiler",
+        github: {
+            contributions: "GitHub Katkıları",
+            viewProfile: "GitHub Profilini Gör"
+        }
     },
 
     // Projects Section

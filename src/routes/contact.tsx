@@ -1,9 +1,9 @@
 import { Title } from "@solidjs/meta";
 import { useI18n } from "~/contexts/I18nContext";
 import AnimatedBackground from "~/components/AnimatedBackground";
-import { onMount } from "solid-js";
+import { onMount, createSignal } from "solid-js";
 import gsap from "gsap";
-import { Mail, Phone, MapPin, Send } from "lucide-solid";
+import { Mail, Phone, MapPin, Copy, Check, Send } from "lucide-solid";
 
 export default function Contact() {
     const { t } = useI18n();
@@ -11,6 +11,24 @@ export default function Contact() {
     let profileImageRef: HTMLImageElement | undefined;
     let contentRef: HTMLDivElement | undefined;
     let contactCardsRef: HTMLDivElement | undefined;
+
+    const [emailCopied, setEmailCopied] = createSignal(false);
+    const [phoneCopied, setPhoneCopied] = createSignal(false);
+
+    const copyToClipboard = async (text: string, type: 'email' | 'phone') => {
+        try {
+            await navigator.clipboard.writeText(text);
+            if (type === 'email') {
+                setEmailCopied(true);
+                setTimeout(() => setEmailCopied(false), 2000);
+            } else {
+                setPhoneCopied(true);
+                setTimeout(() => setPhoneCopied(false), 2000);
+            }
+        } catch (err) {
+            console.error('Failed to copy:', err);
+        }
+    };
 
     onMount(() => {
         // Profile image animation
@@ -114,38 +132,76 @@ export default function Contact() {
                         <div ref={el => contactCardsRef = el} class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                             {/* Email Card */}
-                            <a
-                                href="mailto:ataozeren@icloud.com"
-                                class="contact-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
+                            <div
+                                class="contact-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                             >
                                 <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                    <a href="mailto:ataozeren@icloud.com" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors cursor-pointer">
                                         <Mail size={24} class="text-white" />
-                                    </div>
+                                    </a>
                                     <div class="flex-1">
                                         <h3 class="text-white/60 text-xs uppercase tracking-wider mb-1">{t('contact.email')}</h3>
                                         <p class="text-white font-medium">ataozeren@icloud.com</p>
                                     </div>
-                                    <Send size={16} class="text-white/40 group-hover:text-white/70 transition-colors" />
+                                    <a
+                                        href="mailto:ataozeren@icloud.com"
+                                        class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/15 rounded-lg transition-all duration-300 cursor-pointer"
+                                        title="Mail Gönder"
+                                    >
+                                        <Send size={18} class="text-white/40 group-hover:text-white/70 transition-colors" />
+                                    </a>
+                                    <button
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            copyToClipboard('ataozeren@icloud.com', 'email');
+                                        }}
+                                        class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/15 rounded-lg transition-all duration-300 cursor-pointer"
+                                        title="Kopyala"
+                                    >
+                                        {emailCopied() ? (
+                                            <Check size={18} class="text-green-400" />
+                                        ) : (
+                                            <Copy size={18} class="text-white/40 group-hover:text-white/70 transition-colors" />
+                                        )}
+                                    </button>
                                 </div>
-                            </a>
+                            </div>
 
                             {/* Phone Card */}
-                            <a
-                                href="tel:+905467190703"
-                                class="contact-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
+                            <div
+                                class="contact-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                             >
                                 <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                    <a href="tel:+905467190703" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors cursor-pointer">
                                         <Phone size={24} class="text-white" />
-                                    </div>
+                                    </a>
                                     <div class="flex-1">
                                         <h3 class="text-white/60 text-xs uppercase tracking-wider mb-1">{t('contact.phone')}</h3>
                                         <p class="text-white font-medium">+90 546 719 07 03</p>
                                     </div>
-                                    <Phone size={16} class="text-white/40 group-hover:text-white/70 transition-colors" />
+                                    <a
+                                        href="tel:+905467190703"
+                                        class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/15 rounded-lg transition-all duration-300 cursor-pointer"
+                                        title="Ara"
+                                    >
+                                        <Phone size={18} class="text-white/40 group-hover:text-white/70 transition-colors" />
+                                    </a>
+                                    <button
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            copyToClipboard('+905467190703', 'phone');
+                                        }}
+                                        class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/15 rounded-lg transition-all duration-300 cursor-pointer"
+                                        title="Kopyala"
+                                    >
+                                        {phoneCopied() ? (
+                                            <Check size={18} class="text-green-400" />
+                                        ) : (
+                                            <Copy size={18} class="text-white/40 group-hover:text-white/70 transition-colors" />
+                                        )}
+                                    </button>
                                 </div>
-                            </a>
+                            </div>
 
                         </div>
                     </div>

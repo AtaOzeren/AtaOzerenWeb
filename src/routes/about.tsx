@@ -137,40 +137,6 @@ export default function About() {
       );
     }
 
-    // Hover efektleri için GSAP - sadece scale efekti
-    const createHoverEffect = (iconRef: HTMLDivElement | undefined) => {
-      if (!iconRef) return;
-
-      iconRef.addEventListener('mouseenter', () => {
-        gsap.to(iconRef, { scale: 1.1, duration: 0.3, ease: "power2.out" });
-      });
-
-      iconRef.addEventListener('mouseleave', () => {
-        gsap.to(iconRef, { scale: 1, duration: 0.3, ease: "power2.out" });
-      });
-    };
-
-    // Tüm iconlara hover efekti ekle
-    createHoverEffect(html5Ref);
-    createHoverEffect(cssRef);
-    createHoverEffect(sassRef);
-    createHoverEffect(jsRef);
-    createHoverEffect(tsRef);
-    createHoverEffect(gitRef);
-    createHoverEffect(githubRef);
-    createHoverEffect(vueRef);
-    createHoverEffect(nextRef);
-    createHoverEffect(nuxtRef);
-    createHoverEffect(reactRef);
-    createHoverEffect(reactNativeRef);
-    createHoverEffect(expoRef);
-    createHoverEffect(sqliteRef);
-    createHoverEffect(mongodbRef);
-    createHoverEffect(cloudflareRef);
-    createHoverEffect(tailwindRef);
-    createHoverEffect(mysqlRef);
-    createHoverEffect(d1Ref);
-    createHoverEffect(pythonRef);
   });
 
   return (

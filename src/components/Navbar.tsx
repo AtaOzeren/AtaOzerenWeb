@@ -323,31 +323,21 @@ const Navbar: Component = () => {
     };
 
     /**
-     * Initialize navigation link animations
+     * Initialize navigation link animations (hover effects only, no innerHTML manipulation)
      */
     const initializeNavLinkAnimations = () => {
         const navLinks = document.querySelectorAll('.nav-link');
 
         navLinks.forEach((link) => {
             const linkElement = link as HTMLElement;
-            const originalText = linkElement.textContent || '';
-            let hoverTimeout: number;
-
-            // Convert text to letter spans
-            linkElement.innerHTML = createLetterSpans(originalText);
-            const letterElements = linkElement.querySelectorAll('.letter');
 
             // Add underline element
             const underline = createUnderlineElement();
             linkElement.style.position = 'relative';
             linkElement.appendChild(underline);
 
-            // Create letter animation function
-            const animateLetters = createLetterAnimation(letterElements);
-
-            // Mouse enter event
+            // Mouse enter event - simple scale and underline
             linkElement.addEventListener('mouseenter', () => {
-                // Scale and underline animation
                 gsap.to(linkElement, {
                     duration: LINK_ANIMATION.duration,
                     scale: LINK_ANIMATION.scale,
@@ -358,17 +348,10 @@ const Navbar: Component = () => {
                     scaleX: 1,
                     ease: LINK_ANIMATION.ease
                 });
-
-                // Delayed letter animation
-                hoverTimeout = window.setTimeout(animateLetters, LINK_ANIMATION.hoverDelay);
             });
 
             // Mouse leave event
             linkElement.addEventListener('mouseleave', () => {
-                if (hoverTimeout) {
-                    clearTimeout(hoverTimeout);
-                }
-
                 gsap.to(linkElement, {
                     duration: LINK_ANIMATION.duration,
                     scale: 1,

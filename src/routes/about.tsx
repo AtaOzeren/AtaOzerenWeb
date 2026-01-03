@@ -210,79 +210,144 @@ export default function About() {
               </p>
             </div>
 
-            {/* Technologies Icons */}
-            <div ref={el => technologiesRef = el} class="mt-12">
-              {/* Tüm Teknoloji Iconları */}
-              <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
-                <div ref={el => html5Ref = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siHtml5} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">HTML</span>
+            {/* Technologies Section */}
+            <div ref={el => technologiesRef = el} class="mt-16 space-y-8">
+
+              {/* Frontend & Styling */}
+              <div class="group">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full"></div>
+                  <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Frontend & Styling</h3>
                 </div>
-                <div ref={el => cssRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siCss} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">CSS</span>
-                </div>
-                <div ref={el => sassRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siSass} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">SCSS</span>
-                </div>
-                <div ref={el => jsRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siJavascript} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">JavaScript</span>
-                </div>
-                <div ref={el => tsRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siTypescript} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">TypeScript</span>
-                </div>
-                <div ref={el => gitRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siGit} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Git</span>
-                </div>
-                <div ref={el => githubRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <Github size={24} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">GitHub</span>
-                </div>
-                <div ref={el => vueRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siVuedotjs} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Vue</span>
-                </div>
-                <div ref={el => nextRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siNextdotjs} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Next.js</span>
-                </div>
-                <div ref={el => nuxtRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siNuxt} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Nuxt.js</span>
-                </div>
-                <div ref={el => reactRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siReact} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">React</span>
-                </div>
-                <div ref={el => reactNativeRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siReact} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">React Native</span>
-                </div>
-                <div ref={el => expoRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siExpo} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Expo Go</span>
-                </div>
-                <div ref={el => sqliteRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siSqlite} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">SQLite</span>
-                </div>
-                <div ref={el => mongodbRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siMongodb} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">MongoDB</span>
-                </div>
-                <div ref={el => cloudflareRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siCloudflare} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Cloudflare</span>
-                </div>
-                <div ref={el => tailwindRef = el} class="relative flex justify-center items-center w-16 h-16 p-3 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm cursor-pointer">
-                  <SimpleIcon icon={siTailwindcss} class="text-white" />
-                  <span class="tech-text absolute opacity-0 scale-75 text-white text-xs font-medium">Tailwind CSS</span>
+                <div class="flex flex-wrap gap-3">
+                  <div ref={el => html5Ref = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siHtml5} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">HTML</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => cssRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siCss} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">CSS</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => sassRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siSass} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">SCSS</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => tailwindRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siTailwindcss} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">Tailwind</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => jsRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siJavascript} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">JavaScript</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => tsRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siTypescript} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">TypeScript</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
                 </div>
               </div>
+
+              {/* Frameworks */}
+              <div class="group">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-gradient-to-b from-purple-400 to-pink-400 rounded-full"></div>
+                  <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Frameworks</h3>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <div ref={el => reactRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siReact} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">React</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => vueRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siVuedotjs} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">Vue.js</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => nextRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siNextdotjs} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">Next.js</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => nuxtRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siNuxt} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">Nuxt.js</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Development */}
+              <div class="group">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-gradient-to-b from-green-400 to-emerald-400 rounded-full"></div>
+                  <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Mobile Development</h3>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <div ref={el => reactNativeRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siReact} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">React Native</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => expoRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siExpo} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">Expo</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Database & Cloud */}
+              <div class="group">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-gradient-to-b from-orange-400 to-amber-400 rounded-full"></div>
+                  <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Database & Cloud</h3>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <div ref={el => sqliteRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siSqlite} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">SQLite</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => mongodbRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siMongodb} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">MongoDB</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => cloudflareRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siCloudflare} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">Cloudflare</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tools & Version Control */}
+              <div class="group">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-1 h-6 bg-gradient-to-b from-rose-400 to-red-400 rounded-full"></div>
+                  <h3 class="text-white/90 text-sm font-semibold uppercase tracking-wider">Tools & Version Control</h3>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <div ref={el => gitRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <SimpleIcon icon={siGit} size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">Git</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                  <div ref={el => githubRef = el} class="relative flex items-center gap-2 px-4 py-2.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                    <Github size={18} class="text-white/80" />
+                    <span class="text-white/80 text-sm font-medium">GitHub</span>
+                    <span class="tech-text hidden"></span>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

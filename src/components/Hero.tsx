@@ -164,7 +164,7 @@ const Hero: Component = () => {
 
                         <Button
                             variant="ata-trans"
-                            href="#contact"
+                            href="/contact"
                             aria-label={t('hero.contact')}
                         >
                             {t('hero.contact')}

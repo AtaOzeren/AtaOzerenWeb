@@ -210,7 +210,7 @@ export default function About() {
             {/* Right - GitHub Contributions Chart */}
             <div class="flex-1 flex items-center justify-center w-full">
               <div
-                class="w-full h-32 md:h-56 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center"
+                class="relative group w-full h-48 md:h-56 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center"
                 onClick={() => setShowGithubModal(true)}
               >
                 <img
@@ -219,6 +219,12 @@ export default function About() {
                   class="w-full h-full object-contain rounded-lg"
                   style="filter: brightness(1.1);"
                 />
+
+                {/* GitHub Label */}
+                <div class="absolute bottom-3 right-4 flex items-center gap-2 text-white/40 group-hover:text-white/90 transition-colors">
+                  <span class="text-xs font-medium">AtaOzeren</span>
+                  <Github size={16} />
+                </div>
               </div>
             </div>
           </div>

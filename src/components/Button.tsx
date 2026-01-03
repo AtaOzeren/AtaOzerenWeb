@@ -17,9 +17,8 @@ const Button: Component<ButtonProps> = (props) => {
     const getVariantStyles = (): string => {
         const baseStyles = THEME.buttons.base;
         const variantStyles = THEME.buttons.variants[props.variant] || '';
-        const scaleEffect = props.variant === 'ata-black' ? ANIMATIONS.hover.scale : '';
 
-        return `${baseStyles} ${variantStyles} ${scaleEffect}`.trim();
+        return `${baseStyles} ${variantStyles}`.trim();
     };
 
     const combinedStyles = () => {

@@ -1,5 +1,5 @@
 import { createContext, createSignal, useContext, Component, JSX } from 'solid-js';
-import { tr, en, type Locale } from '../locales';
+import { tr, en, de, fr, es, type Locale } from '../locales';
 import { useLocalStorage, getBrowserLanguage } from '../hooks';
 import { APP_CONFIG } from '../constants';
 import type { I18nContextType, Language } from '../types';
@@ -52,6 +52,15 @@ export const I18nProvider: Component<I18nProviderProps> = (props) => {
         if (browserLang.startsWith('en')) {
             return 'en';
         }
+        if (browserLang.startsWith('de')) {
+            return 'de';
+        }
+        if (browserLang.startsWith('fr')) {
+            return 'fr';
+        }
+        if (browserLang.startsWith('es')) {
+            return 'es';
+        }
 
         return APP_CONFIG.defaultLanguage;
     };
@@ -76,8 +85,14 @@ export const I18nProvider: Component<I18nProviderProps> = (props) => {
                 return tr;
             case 'en':
                 return en;
+            case 'de':
+                return de;
+            case 'fr':
+                return fr;
+            case 'es':
+                return es;
             default:
-                return tr;
+                return en;
         }
     };
 

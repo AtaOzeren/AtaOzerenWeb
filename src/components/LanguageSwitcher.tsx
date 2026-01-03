@@ -9,13 +9,16 @@ const LanguageSwitcher: Component<LanguageSwitcherProps> = (props) => {
 
     const languages = [
         { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
-        { code: 'en', name: 'English', flag: '🇺🇸' }
+        { code: 'en', name: 'English', flag: '🇺🇸' },
+        { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+        { code: 'fr', name: 'Français', flag: '🇫🇷' },
+        { code: 'es', name: 'Español', flag: '🇪🇸' }
     ];
 
     const currentLanguage = () => languages.find(lang => lang.code === locale()) || languages[0];
 
     const selectLanguage = (langCode: string) => {
-        setLocale(langCode as 'tr' | 'en');
+        setLocale(langCode as 'tr' | 'en' | 'de' | 'fr' | 'es');
         setIsOpen(false);
     };
 

@@ -1,6 +1,6 @@
 // Common types used across the application
 
-export type Language = 'tr' | 'en';
+export type Language = 'tr' | 'en' | 'de' | 'fr' | 'es';
 
 export interface I18nContextType {
     t: (key: string) => string;

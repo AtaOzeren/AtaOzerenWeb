@@ -71,7 +71,7 @@ const ProjectCategories: Component = () => {
                             duration: 0.5,
                             stagger: 0.08,
                             ease: 'power2.out',
-                            onComplete: () => setIsTransitioning(false)
+                            onComplete: () => { setIsTransitioning(false); }
                         }
                     );
                 }, 50);
@@ -124,11 +124,6 @@ const ProjectCategories: Component = () => {
                         >
                             <CategoryIcon icon={category.icon} class="w-4 h-4 md:w-5 md:h-5" />
                             <span>{t(`projects.categories.${category.id}`)}</span>
-
-                            {/* Active indicator */}
-                            <Show when={activeCategory() === category.id}>
-                                <div class={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-gradient-to-r ${category.gradient}`} />
-                            </Show>
                         </button>
                     )}
                 </For>

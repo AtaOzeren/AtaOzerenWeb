@@ -31,6 +31,8 @@ export default function About() {
   let paragraph3Ref: HTMLParagraphElement | undefined;
   let technologiesRef: HTMLDivElement | undefined;
   let profileImageRef: HTMLImageElement | undefined;
+  let modalContainerRef: HTMLDivElement | undefined;
+  let modalContentRef: HTMLDivElement | undefined;
 
   // Icon refs
   let html5Ref: HTMLDivElement | undefined;
@@ -138,7 +140,32 @@ export default function About() {
       );
     }
 
+
+
   });
+
+  const closeModal = () => {
+    if (modalContainerRef && modalContentRef) {
+      // Exit animation
+      const tl = gsap.timeline({
+        onComplete: () => { setShowGithubModal(false); }
+      });
+
+      tl.to(modalContentRef, {
+        opacity: 0,
+        scale: 0.8,
+        y: 20,
+        duration: 0.3,
+        ease: "power2.in"
+      }, 0)
+        .to(modalContainerRef, {
+          opacity: 0,
+          duration: 0.3
+        }, 0);
+    } else {
+      setShowGithubModal(false);
+    }
+  };
 
   return (
     <main class="min-h-screen relative overflow-hidden pt-20">
@@ -183,7 +210,7 @@ export default function About() {
             {/* Right - GitHub Contributions Chart */}
             <div class="flex-1 flex items-center justify-center w-full">
               <div
-                class="w-full h-48 md:h-56 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center"
+                class="w-full h-32 md:h-56 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center justify-center"
                 onClick={() => setShowGithubModal(true)}
               >
                 <img
@@ -384,16 +411,27 @@ export default function About() {
       {/* GitHub Modal */}
       <Show when={showGithubModal()}>
         <div
+          ref={el => {
+            modalContainerRef = el;
+            gsap.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+          }}
           class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-          onClick={() => setShowGithubModal(false)}
+          onClick={closeModal}
         >
           <div
+            ref={el => {
+              modalContentRef = el;
+              gsap.fromTo(el,
+                { opacity: 0, scale: 0.8, y: 20 },
+                { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.7)", delay: 0.1 }
+              );
+            }}
             class="relative bg-zinc-900 border border-white/20 rounded-2xl p-8 max-w-3xl w-full mx-4 max-h-[90vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
-              onClick={() => setShowGithubModal(false)}
+              onClick={closeModal}
               class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300"
             >
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -437,6 +475,6 @@ export default function About() {
           </div>
         </div>
       </Show>
-    </main >
+    </main>
   );
 }

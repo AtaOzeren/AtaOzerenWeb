@@ -108,4 +108,8 @@ export const de: Locale = {
         scrollDown: "Nach unten scrollen",
         scrollUp: "Nach oben",
     },
+    // Not Found
+    notFound: {
+        doomMessage: 'Wir konnten die Seite nicht finden, aber Sie können hier DOOM spielen.'
+    },
 };

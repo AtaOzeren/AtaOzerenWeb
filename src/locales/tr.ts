@@ -105,6 +105,11 @@ export const tr = {
         scrollDown: "Aşağı Kaydır",
         scrollUp: "Yukarı",
     },
+
+    // Not Found
+    notFound: {
+        doomMessage: 'İstediğin sayfayı bulamadık ama istersen buradan DOOM oynayabilirsin.'
+    },
 };
 
 export type Locale = typeof tr;

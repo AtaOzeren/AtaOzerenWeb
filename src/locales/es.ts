@@ -108,4 +108,8 @@ export const es: Locale = {
         scrollDown: "Desplazar hacia abajo",
         scrollUp: "Hacia arriba",
     },
+    // Not Found
+    notFound: {
+        doomMessage: 'No pudimos encontrar la página, pero puedes jugar a DOOM aquí.'
+    },
 };

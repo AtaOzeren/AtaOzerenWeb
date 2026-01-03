@@ -6,7 +6,7 @@ export const en: Locale = {
         home: "HOME",
         about: "ABOUT",
         projects: "PROJECTS",
-        contact: "CONTACT",
+        contact: "Contact",
     },
 
     // Hero Section
@@ -106,5 +106,9 @@ export const en: Locale = {
         open: "Open",
         scrollDown: "Scroll Down",
         scrollUp: "Scroll Up",
+    },
+    // Not Found
+    notFound: {
+        doomMessage: "We couldn't find the page you were looking for, but you can play DOOM here instead."
     },
 };

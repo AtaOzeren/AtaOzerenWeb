@@ -15,7 +15,7 @@ export const fr: Locale = {
         title: "Web Developer & Software Engineer",
         description: "Je développe des applications conviviales et performantes en utilisant les technologies web modernes.",
         cta: "Voir mes projets",
-        contact: "Me contacter",
+        contact: "Contact",
     },
 
     // About Section
@@ -107,5 +107,9 @@ export const fr: Locale = {
         open: "Ouvrir",
         scrollDown: "Défiler vers le bas",
         scrollUp: "Vers le haut",
+    },
+    // Not Found
+    notFound: {
+        doomMessage: "Nous n'avons pas trouvé la page, mais vous pouvez jouer à DOOM ici."
     },
 };

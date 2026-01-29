@@ -72,7 +72,26 @@ export const fr: Locale = {
         saner: "Résidences Saner",
         savuncell: "Savuncell",
         turanlar: "Turanlar Holding",
-        ykt: "Ykt Global"
+        ykt: "Ykt Global",
+        meetlyme: "MeetlyMe",
+        mehves: "Mehves",
+        perlei: "Perlei",
+        chargecrafter: "CHARGECRAFTER",
+        descriptions: {
+            erdemli: "Site web d'entreprise pour des services d'architecture moderne",
+            ege: "Services professionnels d'architecture et de design",
+            eje: "Site web de studio de design créatif",
+            delta: "Plateforme de services de pépinière et d'aménagement paysager",
+            sanercrm: "Système de gestion de la relation client",
+            saner: "Site de projets immobiliers et de logement",
+            savuncell: "Plateforme axée sur la technologie et l'innovation",
+            turanlar: "Site web d'entreprise de la société holding",
+            ykt: "Plateforme mondiale de commerce et de logistique",
+            meetlyme: "Nouveau projet web",
+            mehves: "Nouveau projet web",
+            perlei: "Nouveau projet web",
+            chargecrafter: "Nouveau projet web"
+        }
     },
 
     // Contact Section

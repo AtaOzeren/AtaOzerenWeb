@@ -9,6 +9,7 @@ export interface ProjectDetail {
     image: string;
     description?: string;
     category: ProjectCategory;
+    type: 'corporate' | 'crm' | 'ecommerce';
 }
 
 // Category configuration with icons and colors
@@ -30,7 +31,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: 'https://www.erdemlimimarlik.com/',
         image: '/project-images/project-web/ErdemliMimarlik.jpg',
         description: 'Modern mimarlık hizmetleri sunan kurumsal web sitesi',
-        category: 'frontend'
+        category: 'frontend',
+        type: 'corporate'
     },
     {
         id: 'ege',
@@ -40,7 +42,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/EgeMimarlik.jpg',
         description: 'Profesyonel mimarlık ve tasarım hizmetleri',
-        category: 'frontend'
+        category: 'frontend',
+        type: 'corporate'
     },
     {
         id: 'eje',
@@ -50,7 +53,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/EjeStudio.jpg',
         description: 'Kreatif tasarım stüdyosu web sitesi',
-        category: 'frontend'
+        category: 'frontend',
+        type: 'corporate'
     },
     {
         id: 'delta',
@@ -60,7 +64,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/DeltaFidancilik.jpg',
         description: 'Fidancılık ve peyzaj hizmetleri platformu',
-        category: 'frontend'
+        category: 'frontend',
+        type: 'corporate'
     },
     {
         id: 'saner',
@@ -70,7 +75,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/SanerKonutlari.jpg',
         description: 'Gayrimenkul ve konut projeleri sitesi',
-        category: 'frontend'
+        category: 'frontend',
+        type: 'corporate'
     },
     {
         id: 'savuncell',
@@ -80,7 +86,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/Savuncell.jpg',
         description: 'Teknoloji ve inovasyon odaklı platform',
-        category: 'frontend'
+        category: 'frontend',
+        type: 'corporate'
     },
     {
         id: 'turanlar',
@@ -90,7 +97,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/TuranlarHolding.jpg',
         description: 'Holding şirketi kurumsal web sitesi',
-        category: 'frontend'
+        category: 'frontend',
+        type: 'corporate'
     },
     {
         id: 'ykt',
@@ -100,7 +108,52 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/YKTGlobal.jpg',
         description: 'Global ticaret ve lojistik platformu',
-        category: 'frontend'
+        category: 'frontend',
+        type: 'corporate'
+    },
+    {
+        id: 'meetlyme',
+        name: 'MeetlyMe',
+        company: 'SyconX',
+        technologies: ['Vue.js', 'Tailwind CSS'],
+        url: '#',
+        image: '/project-images/project-web/MeetlyMe.png',
+        description: 'New web project', // Placeholder description
+        category: 'frontend',
+        type: 'corporate'
+    },
+    {
+        id: 'mehves',
+        name: 'Mehves',
+        company: 'SyconX',
+        technologies: ['Vue.js', 'Tailwind CSS'],
+        url: '#',
+        image: '/project-images/project-web/Mehves.png',
+        description: 'New web project', // Placeholder description
+        category: 'frontend',
+        type: 'corporate'
+    },
+    {
+        id: 'perlei',
+        name: 'Perlei',
+        company: 'SyconX',
+        technologies: ['Vue.js', 'Tailwind CSS'],
+        url: '#',
+        image: '/project-images/project-web/Perlei.png',
+        description: 'New web project', // Placeholder description
+        category: 'frontend',
+        type: 'corporate'
+    },
+    {
+        id: 'chargecrafter',
+        name: 'CHARGECRAFTER',
+        company: 'SyconX',
+        technologies: ['Vue.js', 'Tailwind CSS'],
+        url: '#',
+        image: '/project-images/project-web/CHARGECRAFTER.png',
+        description: 'New web project', // Placeholder description
+        category: 'frontend',
+        type: 'corporate'
     },
     // CRM Projects
     {
@@ -111,7 +164,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: 'https://crm.sanerkonutlari.com/',
         image: '/project-images/project-web/SanerCRM.jpeg',
         description: 'Müşteri ilişkileri yönetim sistemi',
-        category: 'crm'
+        category: 'crm',
+        type: 'crm'
     },
     // Backend Projects - Placeholder (user will add)
     // Mobile Projects - Placeholder (user will add)

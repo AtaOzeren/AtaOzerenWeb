@@ -168,7 +168,7 @@ const WebProjectsShowcase: Component<WebProjectsShowcaseProps> = (props) => {
             y: 0,
             rotationY: 0,
             rotationX: 0,
-            filter: "blur(0px) brightness(1)",
+            filter: "blur(0px) brightness(1) grayscale(100%)",
             duration: SHOWCASE_ANIMATIONS.imageTransition.duration,
             ease: SHOWCASE_ANIMATIONS.imageTransition.ease,
             transformOrigin: "center center"

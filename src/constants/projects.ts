@@ -9,7 +9,7 @@ export interface ProjectDetail {
     image: string;
     description?: string;
     category: ProjectCategory;
-    type: 'corporate' | 'crm' | 'ecommerce';
+    type: 'corporate' | 'crm' | 'ecommerce' | 'mcp';
 }
 
 // Category configuration with icons and colors
@@ -166,6 +166,18 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         description: 'projects.descriptions.sanercrm',
         category: 'crm',
         type: 'crm'
+    },
+    // MCP Projects
+    {
+        id: 'meetlyme_mcp',
+        name: 'MeetlyMe MCP',
+        company: 'SyconX',
+        technologies: ['Node.js', 'MCP Server'],
+        url: '#',
+        image: '/project-images/project-web/MeetlyMeMCP.png',
+        description: 'projects.descriptions.meetlyme_mcp',
+        category: 'mcp',
+        type: 'mcp'
     },
     // Backend Projects - Placeholder (user will add)
     // Mobile Projects - Placeholder (user will add)

@@ -60,7 +60,8 @@ export const tr = {
         projectTypes: {
             corporate: "Kurumsal",
             ecommerce: "E-Ticaret",
-            crm: "CRM"
+            crm: "CRM",
+            mcp: "MCP Sunucu"
         },
         // Proje isimleri
         erdemli: "Erdemli Mimarlık",
@@ -89,7 +90,8 @@ export const tr = {
             meetlyme: "Yeni web projesi",
             mehves: "Yeni web projesi",
             perlei: "Yeni web projesi",
-            chargecrafter: "Yeni web projesi"
+            chargecrafter: "Yeni web projesi",
+            meetlyme_mcp: "Siteye özgü işlemleri gerçekleştiren, Node.js tabanlı ve veritabanı gerektirmeyen yapay zeka destekli MCP sunucusu."
         }
     },    // Contact Section
     contact: {

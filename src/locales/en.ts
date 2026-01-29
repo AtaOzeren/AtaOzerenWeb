@@ -62,7 +62,8 @@ export const en: Locale = {
         projectTypes: {
             corporate: "Corporate",
             ecommerce: "E-Commerce",
-            crm: "CRM"
+            crm: "CRM",
+            mcp: "MCP Server"
         },
         // Project names
         erdemli: "Erdemli Architecture",
@@ -91,7 +92,8 @@ export const en: Locale = {
             meetlyme: "New web project",
             mehves: "New web project",
             perlei: "New web project",
-            chargecrafter: "New web project"
+            chargecrafter: "New web project",
+            meetlyme_mcp: "Node.js-based AI-powered MCP server handling site-specific operations without a database."
         }
     },    // Contact Section
     contact: {

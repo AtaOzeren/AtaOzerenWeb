@@ -231,7 +231,10 @@ const ProjectCategories: Component = () => {
                                 {selectedProject()!.name}
                             </h2>
                             <p class="text-sm text-white/50 uppercase tracking-wider mb-4">
-                                {selectedProject()!.company} • {t(`projects.categories.${selectedProject()!.category}`)}
+                                {selectedProject()!.company} • {(Array.isArray(selectedProject()!.category)
+                                    ? (selectedProject()!.category as ProjectCategory[]).map(c => t(`projects.categories.${c}`)).join(' & ')
+                                    : t(`projects.categories.${selectedProject()!.category}`)
+                                )}
                             </p>
                             <p class="text-white/70 mb-6">
                                 {/* @ts-ignore */}

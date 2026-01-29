@@ -8,7 +8,7 @@ export interface ProjectDetail {
     url: string;
     image: string;
     description?: string;
-    category: ProjectCategory;
+    category: ProjectCategory | ProjectCategory[];
     type: 'corporate' | 'crm' | 'ecommerce' | 'mcp';
 }
 
@@ -176,7 +176,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: '#',
         image: '/project-images/project-web/MeetlyMeMCP.png',
         description: 'projects.descriptions.meetlyme_mcp',
-        category: 'mcp',
+        category: ['mcp', 'backend'],
         type: 'mcp'
     },
     // Backend Projects - Placeholder (user will add)
@@ -186,5 +186,10 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
 
 // Helper function to get projects by category
 export const getProjectsByCategory = (category: ProjectCategory): ProjectDetail[] => {
-    return PROJECT_DETAILS.filter(project => project.category === category);
+    return PROJECT_DETAILS.filter(project => {
+        if (Array.isArray(project.category)) {
+            return project.category.includes(category);
+        }
+        return project.category === category;
+    });
 };

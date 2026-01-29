@@ -153,7 +153,8 @@ const ProjectCategories: Component = () => {
                                     {project.name}
                                 </h3>
                                 <p class="text-sm text-white/60 mb-4 line-clamp-2">
-                                    {project.description}
+                                    {/* @ts-ignore */}
+                                    {t(project.description)}
                                 </p>
 
                                 {/* Technologies */}
@@ -233,7 +234,8 @@ const ProjectCategories: Component = () => {
                                 {selectedProject()!.company} • {t(`projects.categories.${selectedProject()!.category}`)}
                             </p>
                             <p class="text-white/70 mb-6">
-                                {selectedProject()!.description}
+                                {/* @ts-ignore */}
+                                {t(selectedProject()!.description!)}
                             </p>
 
                             {/* Technologies */}

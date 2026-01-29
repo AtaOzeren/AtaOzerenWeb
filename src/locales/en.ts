@@ -73,7 +73,26 @@ export const en: Locale = {
         saner: "Saner Residences",
         savuncell: "Savuncell",
         turanlar: "Turanlar Holding",
-        ykt: "Ykt Global"
+        ykt: "Ykt Global",
+        meetlyme: "MeetlyMe",
+        mehves: "Mehves",
+        perlei: "Perlei",
+        chargecrafter: "CHARGECRAFTER",
+        descriptions: {
+            erdemli: "Corporate website for modern architecture services",
+            ege: "Professional architecture and design services",
+            eje: "Creative design studio website",
+            delta: "Sapling and landscaping services platform",
+            sanercrm: "Customer relationship management system",
+            saner: "Real estate and housing projects site",
+            savuncell: "Technology and innovation focused platform",
+            turanlar: "Holding company corporate website",
+            ykt: "Global trade and logistics platform",
+            meetlyme: "New web project",
+            mehves: "New web project",
+            perlei: "New web project",
+            chargecrafter: "New web project"
+        }
     },    // Contact Section
     contact: {
         title: "Contact",

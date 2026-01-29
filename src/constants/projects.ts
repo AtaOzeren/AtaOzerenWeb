@@ -30,7 +30,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: 'https://www.erdemlimimarlik.com/',
         image: '/project-images/project-web/ErdemliMimarlik.jpg',
-        description: 'Modern mimarlık hizmetleri sunan kurumsal web sitesi',
+        description: 'projects.descriptions.erdemli',
         category: 'frontend',
         type: 'corporate'
     },
@@ -41,7 +41,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/EgeMimarlik.jpg',
-        description: 'Profesyonel mimarlık ve tasarım hizmetleri',
+        description: 'projects.descriptions.ege',
         category: 'frontend',
         type: 'corporate'
     },
@@ -52,7 +52,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/EjeStudio.jpg',
-        description: 'Kreatif tasarım stüdyosu web sitesi',
+        description: 'projects.descriptions.eje',
         category: 'frontend',
         type: 'corporate'
     },
@@ -63,7 +63,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/DeltaFidancilik.jpg',
-        description: 'Fidancılık ve peyzaj hizmetleri platformu',
+        description: 'projects.descriptions.delta',
         category: 'frontend',
         type: 'corporate'
     },
@@ -74,7 +74,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/SanerKonutlari.jpg',
-        description: 'Gayrimenkul ve konut projeleri sitesi',
+        description: 'projects.descriptions.saner',
         category: 'frontend',
         type: 'corporate'
     },
@@ -85,7 +85,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/Savuncell.jpg',
-        description: 'Teknoloji ve inovasyon odaklı platform',
+        description: 'projects.descriptions.savuncell',
         category: 'frontend',
         type: 'corporate'
     },
@@ -96,7 +96,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/TuranlarHolding.jpg',
-        description: 'Holding şirketi kurumsal web sitesi',
+        description: 'projects.descriptions.turanlar',
         category: 'frontend',
         type: 'corporate'
     },
@@ -107,7 +107,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/YKTGlobal.jpg',
-        description: 'Global ticaret ve lojistik platformu',
+        description: 'projects.descriptions.ykt',
         category: 'frontend',
         type: 'corporate'
     },
@@ -118,7 +118,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/MeetlyMe.png',
-        description: 'New web project', // Placeholder description
+        description: 'projects.descriptions.meetlyme',
         category: 'frontend',
         type: 'corporate'
     },
@@ -129,7 +129,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/Mehves.png',
-        description: 'New web project', // Placeholder description
+        description: 'projects.descriptions.mehves',
         category: 'frontend',
         type: 'corporate'
     },
@@ -140,7 +140,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/Perlei.png',
-        description: 'New web project', // Placeholder description
+        description: 'projects.descriptions.perlei',
         category: 'frontend',
         type: 'corporate'
     },
@@ -151,7 +151,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: '#',
         image: '/project-images/project-web/CHARGECRAFTER.png',
-        description: 'New web project', // Placeholder description
+        description: 'projects.descriptions.chargecrafter',
         category: 'frontend',
         type: 'corporate'
     },
@@ -163,7 +163,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS'],
         url: 'https://crm.sanerkonutlari.com/',
         image: '/project-images/project-web/SanerCRM.jpeg',
-        description: 'Müşteri ilişkileri yönetim sistemi',
+        description: 'projects.descriptions.sanercrm',
         category: 'crm',
         type: 'crm'
     },

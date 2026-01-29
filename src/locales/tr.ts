@@ -71,7 +71,26 @@ export const tr = {
         saner: "Saner Konutları",
         savuncell: "Savuncell",
         turanlar: "Turanlar Holding",
-        ykt: "Ykt Global"
+        ykt: "Ykt Global",
+        meetlyme: "MeetlyMe",
+        mehves: "Mehves",
+        perlei: "Perlei",
+        chargecrafter: "CHARGECRAFTER",
+        descriptions: {
+            erdemli: "Modern mimarlık hizmetleri sunan kurumsal web sitesi",
+            ege: "Profesyonel mimarlık ve tasarım hizmetleri",
+            eje: "Kreatif tasarım stüdyosu web sitesi",
+            delta: "Fidancılık ve peyzaj hizmetleri platformu",
+            sanercrm: "Müşteri ilişkileri yönetim sistemi",
+            saner: "Gayrimenkul ve konut projeleri sitesi",
+            savuncell: "Teknoloji ve inovasyon odaklı platform",
+            turanlar: "Holding şirketi kurumsal web sitesi",
+            ykt: "Global ticaret ve lojistik platformu",
+            meetlyme: "Yeni web projesi",
+            mehves: "Yeni web projesi",
+            perlei: "Yeni web projesi",
+            chargecrafter: "Yeni web projesi"
+        }
     },    // Contact Section
     contact: {
         title: "İletişim",

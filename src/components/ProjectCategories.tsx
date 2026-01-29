@@ -142,7 +142,7 @@ const ProjectCategories: Component = () => {
                                 <img
                                     src={project.image}
                                     alt={project.name}
-                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                    class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500 grayscale group-hover:grayscale-0"
                                 />
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                             </div>

@@ -184,7 +184,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         id: 'trivia_game_backend',
         name: 'Trivia Game Backend',
         company: 'SyconX',
-        technologies: ['TypeScript', 'Cloudflare D1'],
+        technologies: ['TypeScript', 'Cloudflare', 'Cloudflare D1'],
         url: '#',
         image: '/project-images/project-web/trivia-game-backend.png',
         description: 'projects.descriptions.trivia_game_backend',

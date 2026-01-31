@@ -94,7 +94,7 @@ export const en: Locale = {
             perlei: "New web project",
             chargecrafter: "New web project",
             meetlyme_mcp: "Node.js-based AI-powered MCP server handling site-specific operations without a database.",
-            trivia_game_backend: "Trivia game backend project developed using Cloudflare SQL database and TypeScript."
+            trivia_game_backend: "Trivia game backend project developed using Cloudflare D1 database and TypeScript."
         }
     },    // Contact Section
     contact: {

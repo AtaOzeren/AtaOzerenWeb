@@ -93,7 +93,7 @@ export const es: Locale = {
             perlei: "Nuevo proyecto web",
             chargecrafter: "Nuevo proyecto web",
             meetlyme_mcp: "Servidor MCP basado en Node.js impulsado por IA que maneja operaciones específicas del sitio sin necesidad de base de datos.",
-            trivia_game_backend: "Proyecto backend de juego de trivia desarrollado con base de datos Cloudflare SQL y TypeScript."
+            trivia_game_backend: "Proyecto backend de juego de trivia desarrollado con base de datos Cloudflare D1 y TypeScript."
         }
     },
 

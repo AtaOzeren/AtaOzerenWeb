@@ -9,7 +9,8 @@ export interface ProjectDetail {
     image: string;
     description?: string;
     category: ProjectCategory | ProjectCategory[];
-    type: 'corporate' | 'crm' | 'ecommerce' | 'mcp';
+    type: 'corporate' | 'crm' | 'ecommerce' | 'mcp' | 'mobile_game' | 'mobile_app';
+    publishStatus?: 'published' | 'pending';
 }
 
 // Category configuration with icons and colors
@@ -191,7 +192,31 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         category: 'backend',
         type: 'corporate'
     },
-    // Mobile Projects - Placeholder (user will add)
+    // Mobile Projects
+    {
+        id: 'trivia_game',
+        name: 'Trivia Game',
+        company: '',
+        technologies: ['React Native', 'Tailwind CSS', 'Expo Go'],
+        url: '',
+        image: '/project-images/project-web/Trivia-Game.png',
+        description: 'projects.descriptions.trivia_game',
+        category: 'mobile',
+        type: 'mobile_game',
+        publishStatus: 'pending'
+    },
+    {
+        id: 'popy_log',
+        name: 'Popy Log',
+        company: '',
+        technologies: ['React Native', 'Tailwind CSS', 'Expo Go'],
+        url: '',
+        image: '/project-images/project-web/Popy-Log.png',
+        description: 'projects.descriptions.popy_log',
+        category: 'mobile',
+        type: 'mobile_app',
+        publishStatus: 'pending'
+    },
     // MCP Projects - Placeholder (user will add)
 ];
 

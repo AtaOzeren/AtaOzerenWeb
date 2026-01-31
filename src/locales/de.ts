@@ -93,7 +93,10 @@ export const de: Locale = {
             perlei: "Neues Webprojekt",
             chargecrafter: "Neues Webprojekt",
             meetlyme_mcp: "Node.js-basierter KI-gestützter MCP-Server, der sitespezifische Operationen ohne Datenbank durchführt.",
-            trivia_game_backend: "Trivia-Spiel-Backend-Projekt, entwickelt mit Cloudflare D1-Datenbank und TypeScript."
+            trivia_game_backend: "Trivia-Spiel-Backend-Projekt, entwickelt mit Cloudflare D1-Datenbank und TypeScript.",
+            trivia_game: "Mobiles Trivia-Spiel, entwickelt mit React Native, Tailwind CSS und Expo Go.",
+            popy_log: "Mobile Protokollierungs- und Tracking-App, entwickelt mit React Native, Tailwind CSS und Expo Go.",
+            pendingPublication: "Bereit, wartet auf Veröffentlichung."
         }
     },
 

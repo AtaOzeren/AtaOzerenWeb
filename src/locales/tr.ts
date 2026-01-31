@@ -92,7 +92,10 @@ export const tr = {
             perlei: "Yeni web projesi",
             chargecrafter: "Yeni web projesi",
             meetlyme_mcp: "Siteye özgü işlemleri gerçekleştiren, Node.js tabanlı ve veritabanı gerektirmeyen yapay zeka destekli MCP sunucusu.",
-            trivia_game_backend: "Cloudflare D1 veritabanı ve TypeScript kullanılarak geliştirilmiş Trivia oyunu backend projesi."
+            trivia_game_backend: "Cloudflare D1 veritabanı ve TypeScript kullanılarak geliştirilmiş Trivia oyunu backend projesi.",
+            trivia_game: "React Native, Tailwind CSS ve Expo Go kullanılarak geliştirilmiş mobil Trivia oyunu.",
+            popy_log: "React Native, Tailwind CSS ve Expo Go kullanılarak geliştirilmiş mobil kayıt ve takip uygulaması.",
+            pendingPublication: "Hazır, yayınlanması bekleniyor."
         }
     },    // Contact Section
     contact: {

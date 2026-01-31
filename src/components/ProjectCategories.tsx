@@ -254,17 +254,25 @@ const ProjectCategories: Component = () => {
 
                             {/* Actions */}
                             <div class="flex gap-4">
-                                <a
-                                    href={selectedProject()!.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
-                                >
-                                    <span>{t('projects.visitSite')}</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                    </svg>
-                                </a>
+                                {selectedProject()!.publishStatus === 'pending' ? (
+                                    <div class="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 rounded-xl font-medium">
+                                        <span>{t('projects.descriptions.pendingPublication')}</span>
+                                    </div>
+                                ) : (
+                                    selectedProject()!.url && selectedProject()!.url !== '#' && (
+                                        <a
+                                            href={selectedProject()!.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
+                                        >
+                                            <span>{t('projects.visitSite')}</span>
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                            </svg>
+                                        </a>
+                                    )
+                                )}
                             </div>
                         </div>
                     </div>

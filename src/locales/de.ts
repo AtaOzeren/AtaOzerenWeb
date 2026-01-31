@@ -75,9 +75,9 @@ export const de: Locale = {
         turanlar: "Turanlar Holding",
         ykt: "Ykt Global",
         meetlyme: "MeetlyMe",
-        mehves: "Mehves",
+        mehves: "Mehves Giyim",
         perlei: "Perlei",
-        chargecrafter: "CHARGECRAFTER",
+        chargecrafter: "Charge Crafter",
         descriptions: {
             erdemli: "Unternehmenswebsite für moderne Architekturdienstleistungen",
             ege: "Professionelle Architektur- und Designdienstleistungen",

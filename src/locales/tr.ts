@@ -74,9 +74,9 @@ export const tr = {
         turanlar: "Turanlar Holding",
         ykt: "Ykt Global",
         meetlyme: "MeetlyMe",
-        mehves: "Mehves",
+        mehves: "Mehves Giyim",
         perlei: "Perlei",
-        chargecrafter: "CHARGECRAFTER",
+        chargecrafter: "Charge Crafter",
         descriptions: {
             erdemli: "Modern mimarlık hizmetleri sunan kurumsal web sitesi",
             ege: "Profesyonel mimarlık ve tasarım hizmetleri",

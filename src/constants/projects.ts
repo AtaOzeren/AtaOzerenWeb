@@ -179,7 +179,18 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         category: ['mcp', 'backend'],
         type: 'mcp'
     },
-    // Backend Projects - Placeholder (user will add)
+    // Backend Projects
+    {
+        id: 'trivia_game_backend',
+        name: 'Trivia Game Backend',
+        company: 'SyconX',
+        technologies: ['TypeScript', 'Cloudflare SQL', 'Node.js'],
+        url: '#',
+        image: '/project-images/project-web/trivia-game-backend.png',
+        description: 'projects.descriptions.trivia_game_backend',
+        category: 'backend',
+        type: 'corporate'
+    },
     // Mobile Projects - Placeholder (user will add)
     // MCP Projects - Placeholder (user will add)
 ];

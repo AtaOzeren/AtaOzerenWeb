@@ -91,7 +91,8 @@ export const tr = {
             mehves: "Yeni web projesi",
             perlei: "Yeni web projesi",
             chargecrafter: "Yeni web projesi",
-            meetlyme_mcp: "Siteye özgü işlemleri gerçekleştiren, Node.js tabanlı ve veritabanı gerektirmeyen yapay zeka destekli MCP sunucusu."
+            meetlyme_mcp: "Siteye özgü işlemleri gerçekleştiren, Node.js tabanlı ve veritabanı gerektirmeyen yapay zeka destekli MCP sunucusu.",
+            trivia_game_backend: "Cloudflare SQL veritabanı ve TypeScript kullanılarak geliştirilmiş Trivia oyunu backend projesi."
         }
     },    // Contact Section
     contact: {

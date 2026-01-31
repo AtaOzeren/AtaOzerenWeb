@@ -92,7 +92,8 @@ export const de: Locale = {
             mehves: "Neues Webprojekt",
             perlei: "Neues Webprojekt",
             chargecrafter: "Neues Webprojekt",
-            meetlyme_mcp: "Node.js-basierter KI-gestützter MCP-Server, der sitespezifische Operationen ohne Datenbank durchführt."
+            meetlyme_mcp: "Node.js-basierter KI-gestützter MCP-Server, der sitespezifische Operationen ohne Datenbank durchführt.",
+            trivia_game_backend: "Trivia-Spiel-Backend-Projekt, entwickelt mit Cloudflare SQL-Datenbank und TypeScript."
         }
     },
 

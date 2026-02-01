@@ -88,7 +88,7 @@ export const es: Locale = {
             savuncell: "Plataforma enfocada en tecnología e innovación",
             turanlar: "Sitio web corporativo de la sociedad holding",
             ykt: "Plataforma global de comercio y logística",
-            meetlyme: "Nuevo proyecto web",
+            meetlyme: "Este sitio web es una herramienta de planificación y colaboración en línea que ayuda a los usuarios a programar fácilmente reuniones de negocios y eventos, compartir su disponibilidad con un solo enlace y gestionar proyectos/equipos desde un solo lugar.",
             mehves: "Nuevo proyecto web",
             perlei: "Nuevo proyecto web",
             chargecrafter: "Nuevo proyecto web",

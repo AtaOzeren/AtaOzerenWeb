@@ -88,7 +88,7 @@ export const fr: Locale = {
             savuncell: "Plateforme axée sur la technologie et l'innovation",
             turanlar: "Site web d'entreprise de la société holding",
             ykt: "Plateforme mondiale de commerce et de logistique",
-            meetlyme: "Nouveau projet web",
+            meetlyme: "Ce site web est un outil de planification et de collaboration en ligne qui aide les utilisateurs à planifier facilement des réunions d'affaires et des événements, à partager leurs disponibilités avec un seul lien et à gérer des projets/équipes à partir d'un seul endroit.",
             mehves: "Nouveau projet web",
             perlei: "Nouveau projet web",
             chargecrafter: "Nouveau projet web",

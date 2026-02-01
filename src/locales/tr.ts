@@ -87,7 +87,7 @@ export const tr = {
             savuncell: "Teknoloji ve inovasyon odaklı platform",
             turanlar: "Holding şirketi kurumsal web sitesi",
             ykt: "Global ticaret ve lojistik platformu",
-            meetlyme: "Yeni web projesi",
+            meetlyme: "Bu web sitesi, iş toplantıları ve etkinlikler için kullanıcıların kolayca toplantı planlamasına, uygunluk zamanlarını tek bir linkle paylaşmasına ve projeleri/ekipleri tek bir yerden yönetmesine yardımcı olan bir online planlama ve işbirliği aracıdır.",
             mehves: "Yeni web projesi",
             perlei: "Yeni web projesi",
             chargecrafter: "Yeni web projesi",

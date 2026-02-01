@@ -89,7 +89,7 @@ export const en: Locale = {
             savuncell: "Technology and innovation focused platform",
             turanlar: "Holding company corporate website",
             ykt: "Global trade and logistics platform",
-            meetlyme: "New web project",
+            meetlyme: "This website is an online planning and collaboration tool that helps users easily schedule meetings for business meetings and events, share their availability with a single link, and manage projects/teams from a single place.",
             mehves: "New web project",
             perlei: "New web project",
             chargecrafter: "New web project",

@@ -90,7 +90,7 @@ export const tr = {
             meetlyme: "Bu web sitesi, iş toplantıları ve etkinlikler için kullanıcıların kolayca toplantı planlamasına, uygunluk zamanlarını tek bir linkle paylaşmasına ve projeleri/ekipleri tek bir yerden yönetmesine yardımcı olan bir online planlama ve işbirliği aracıdır.",
             mehves: "Yeni web projesi",
             perlei: "Yeni web projesi",
-            chargecrafter: "Yeni web projesi",
+            chargecrafter: "İşletmelerin fatura oluşturma, gönderme ve müşteri finans yönetimini tek bir platformda birleştiren kapsamlı bir yönetim aracıdır. Ödeme takibi, otomatik faturalandırma ve iş süreçlerinin düzenlenmesi gibi işlemleri basitleştirerek operasyonel verimliliği artırmayı hedefler.",
             meetlyme_mcp: "Siteye özgü işlemleri gerçekleştiren, Node.js tabanlı ve veritabanı gerektirmeyen yapay zeka destekli MCP sunucusu.",
             trivia_game_backend: "Cloudflare D1 veritabanı ve TypeScript kullanılarak geliştirilmiş Trivia oyunu backend projesi.",
             trivia_game: "React Native, Tailwind CSS ve Expo Go kullanılarak geliştirilmiş mobil Trivia oyunu.",

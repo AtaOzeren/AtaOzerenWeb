@@ -92,7 +92,7 @@ export const en: Locale = {
             meetlyme: "This website is an online planning and collaboration tool that helps users easily schedule meetings for business meetings and events, share their availability with a single link, and manage projects/teams from a single place.",
             mehves: "New web project",
             perlei: "New web project",
-            chargecrafter: "New web project",
+            chargecrafter: "A comprehensive management tool that consolidates invoicing, sending, and customer financial management into a single platform for businesses. It aims to increase operational efficiency by simplifying processes such as payment tracking, automated invoicing, and streamlining business workflows.",
             meetlyme_mcp: "Node.js-based AI-powered MCP server handling site-specific operations without a database.",
             trivia_game_backend: "Trivia game backend project developed using Cloudflare D1 database and TypeScript.",
             trivia_game: "Mobile Trivia game developed using React Native, Tailwind CSS, and Expo Go.",

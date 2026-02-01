@@ -91,7 +91,7 @@ export const fr: Locale = {
             meetlyme: "Ce site web est un outil de planification et de collaboration en ligne qui aide les utilisateurs à planifier facilement des réunions d'affaires et des événements, à partager leurs disponibilités avec un seul lien et à gérer des projets/équipes à partir d'un seul endroit.",
             mehves: "Nouveau projet web",
             perlei: "Nouveau projet web",
-            chargecrafter: "Nouveau projet web",
+            chargecrafter: "Un outil de gestion complet qui regroupe la facturation, l'envoi et la gestion financière des clients sur une seule plateforme pour les entreprises. Il vise à accroître l'efficacité opérationnelle en simplifiant des processus tels que le suivi des paiements, la facturation automatisée et l'organisation des flux de travail.",
             meetlyme_mcp: "Serveur MCP basé sur Node.js alimenté par l'IA qui gère les opérations spécifiques au site sans avoir besoin d'une base de données.",
             trivia_game_backend: "Projet backend de jeu de trivia développé avec la base de données Cloudflare D1 et TypeScript.",
             trivia_game: "Jeu de trivia mobile développé avec React Native, Tailwind CSS et Expo Go.",

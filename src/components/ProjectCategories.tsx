@@ -1,46 +1,9 @@
 import { Component, createSignal, For, Show } from 'solid-js';
 import { gsap } from 'gsap';
 import { PROJECT_DETAILS, PROJECT_CATEGORIES, getProjectsByCategory, type ProjectCategory, type ProjectDetail } from '../constants/projects';
+import CategoryIcon from '~/components/CategoryIcon';
+import { MobileCategoryDropdown } from './MobileCategoryDropdown';
 import { useI18n } from '../contexts/I18nContext';
-
-// Icons for categories
-const CategoryIcon = (props: { icon: string; class?: string }) => {
-    const icons: Record<string, () => any> = {
-        layout: () => (
-            <svg class={props.class || "w-5 h-5"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-            </svg>
-        ),
-        server: () => (
-            <svg class={props.class || "w-5 h-5"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-            </svg>
-        ),
-        smartphone: () => (
-            <svg class={props.class || "w-5 h-5"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
-        ),
-        users: () => (
-            <svg class={props.class || "w-5 h-5"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-        ),
-        cpu: () => (
-            <svg class={props.class || "w-5 h-5"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-            </svg>
-        ),
-        activity: () => (
-            <svg class={props.class || "w-5 h-5"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-        ),
-    };
-
-    const IconComponent = icons[props.icon];
-    return IconComponent ? <IconComponent /> : null;
-};
 
 // Persistent state module-level variable
 const visitedCategories = new Set<string>();
@@ -50,6 +13,7 @@ const ProjectCategories: Component = () => {
     const [activeCategory, setActiveCategory] = createSignal<ProjectCategory>('frontend');
     const [selectedProject, setSelectedProject] = createSignal<ProjectDetail | null>(null);
     const [isTransitioning, setIsTransitioning] = createSignal(false);
+    const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
 
 
 
@@ -129,27 +93,39 @@ const ProjectCategories: Component = () => {
 
     return (
         <div class="w-full max-w-7xl mx-auto px-4 py-8">
-            {/* Category Tabs */}
-            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
-                <For each={PROJECT_CATEGORIES}>
-                    {(category) => (
-                        <button
-                            onClick={() => handleCategoryChange(category.id as ProjectCategory)}
-                            class={`
-                                relative flex items-center gap-2 px-4 md:px-6 py-3 rounded-xl
-                                font-medium text-sm md:text-base uppercase tracking-wider
-                                transition-all duration-300 ease-out
-                                ${activeCategory() === category.id
-                                    ? 'bg-white text-gray-900 shadow-lg shadow-white/20'
-                                    : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
-                                }
-                            `}
-                        >
-                            <CategoryIcon icon={category.icon} class="w-4 h-4 md:w-5 md:h-5" />
-                            <span>{t(`projects.categories.${category.id}`)}</span>
-                        </button>
-                    )}
-                </For>
+            {/* Category Navigation */}
+            <div class="mb-12 relative z-20">
+                {/* Desktop/Laptop Tabs (Hidden on Mobile/Tablet) */}
+                <div class="hidden lg:flex flex-wrap justify-center gap-4">
+                    <For each={PROJECT_CATEGORIES}>
+                        {(category) => (
+                            <button
+                                onClick={() => handleCategoryChange(category.id as ProjectCategory)}
+                                class={`
+                                    relative flex items-center gap-2 px-6 py-3 rounded-xl
+                                    font-medium text-base uppercase tracking-wider
+                                    transition-all duration-300 ease-out
+                                    ${activeCategory() === category.id
+                                        ? 'bg-white text-gray-900 shadow-lg shadow-white/20'
+                                        : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
+                                    }
+                                `}
+                            >
+                                <CategoryIcon icon={category.icon} class="w-5 h-5" />
+                                <span>{t(`projects.categories.${category.id}`)}</span>
+                            </button>
+                        )}
+                    </For>
+                </div>
+
+                {/* Mobile/Tablet Dropdown (Visible only on smaller screens) */}
+                <MobileCategoryDropdown
+                    activeCategory={activeCategory()}
+                    isDropdownOpen={isDropdownOpen()}
+                    setIsDropdownOpen={setIsDropdownOpen}
+                    handleCategoryChange={handleCategoryChange}
+                    t={t}
+                />
             </div>
 
             {/* Projects Grid */}

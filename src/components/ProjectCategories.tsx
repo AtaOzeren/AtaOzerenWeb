@@ -65,33 +65,39 @@ const ProjectCategories: Component = () => {
         setIsTransitioning(true);
         visitedCategories.add(category);
 
-        // Fade out current projects
+        // Fade out current projects (Blur out)
         gsap.to('.project-card', {
             opacity: 0,
-            y: 20,
             scale: 0.95,
-            duration: 0.3,
-            stagger: 0.05,
+            filter: 'blur(10px)',
+            duration: 0.25,
+            stagger: 0.03,
             ease: 'power2.in',
             onComplete: () => {
                 setActiveCategory(category);
                 setSelectedProject(null);
 
-                // Fade in new projects
+                // Fade in new projects (Blur Reveal: Slide up + Unblur)
                 setTimeout(() => {
                     gsap.fromTo('.project-card',
-                        { opacity: 0, y: 30, scale: 0.9 },
+                        {
+                            opacity: 0,
+                            y: 20,
+                            scale: 0.98,
+                            filter: 'blur(10px)'
+                        },
                         {
                             opacity: 1,
                             y: 0,
                             scale: 1,
-                            duration: 0.5,
-                            stagger: 0.08,
+                            filter: 'blur(0px)',
+                            duration: 0.4,
+                            stagger: 0.06,
                             ease: 'power2.out',
                             onComplete: () => { setIsTransitioning(false); }
                         }
                     );
-                }, 50);
+                }, 20);
             }
         });
     };

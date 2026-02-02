@@ -6,6 +6,7 @@ export const APP_CONFIG = {
     supportedLanguages: ['tr', 'en', 'de', 'fr', 'es'] as const,
     scrollThreshold: 50,
     transitionDuration: 300,
+    siteUrl: 'https://ataozeren.com',
 } as const;
 
 // Theme constants

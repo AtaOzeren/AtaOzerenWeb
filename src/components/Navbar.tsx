@@ -4,6 +4,7 @@ import { THEME, ANIMATIONS } from '../constants';
 import LanguageSwitcher from './LanguageSwitcher';
 import { gsap } from 'gsap';
 import { A } from '@solidjs/router';
+import { SOCIAL_LINKS } from '../constants/socials';
 
 // Animation configuration constants
 const LOGO_ANIMATION = {
@@ -165,6 +166,48 @@ const Navbar: Component = () => {
                 delay: 0.2
             });
 
+            // Animate language switcher
+            const langSwitcher = document.querySelector('.mobile-language-switcher');
+            if (langSwitcher) {
+                gsap.fromTo(langSwitcher, {
+                    opacity: 0,
+                    y: 20
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: HAMBURGER_ANIMATION.menuDuration,
+                    ease: HAMBURGER_ANIMATION.menuEase,
+                    delay: 0.6
+                });
+            }
+
+            // Animate mobile social links
+            const mobileSocials = document.querySelector('.mobile-social-links');
+            if (mobileSocials) {
+                gsap.fromTo(mobileSocials, {
+                    opacity: 0,
+                    y: 20
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: HAMBURGER_ANIMATION.menuDuration,
+                    ease: HAMBURGER_ANIMATION.menuEase,
+                    delay: 0.7
+                });
+            }
+
+            // HIDE GLOBAL SOCIAL LINKS
+            const globalSocials = document.querySelector('.global-social-links');
+            if (globalSocials) {
+                gsap.to(globalSocials, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    pointerEvents: 'none'
+                });
+            }
+
         } else {
             // Close menu animation
 
@@ -197,6 +240,19 @@ const Navbar: Component = () => {
                 ease: "power2.in",
                 stagger: 0.05
             });
+
+            // SHOW GLOBAL SOCIAL LINKS
+            const globalSocials = document.querySelector('.global-social-links');
+            if (globalSocials) {
+                gsap.to(globalSocials, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.4,
+                    ease: "power2.out",
+                    delay: 0.2,
+                    pointerEvents: 'auto'
+                });
+            }
 
             // Hide menu
             if (mobileMenu) {
@@ -388,7 +444,7 @@ const Navbar: Component = () => {
                     <div class={`flex items-center justify-between w-full ${THEME.spacing.navHeight}`}>
                         {/* Logo Section */}
                         <div class="flex-shrink-0 -ml-2">
-                            <A href="/" class={`logo-ata cursor-pointer ${logoStyles()}`}>
+                            <A href="/" class={`logo-ata cursor-pointer ${logoStyles()} ${isMobileMenuOpen() ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                                 ATA
                             </A>
                         </div>
@@ -474,8 +530,25 @@ const Navbar: Component = () => {
                 </div>
 
                 {/* Mobile Language Switcher */}
-                <div class="mb-4">
+                <div class="mb-8 mobile-language-switcher opacity-0 translate-y-4">
                     <LanguageSwitcher isScrolled={false} />
+                </div>
+
+                {/* Mobile Social Links */}
+                <div class="mobile-social-links flex flex-row gap-4 mb-8 opacity-0 translate-y-4">
+                    {SOCIAL_LINKS.map(link => (
+                        <a
+                            href={link.url}
+                            target={link.name === 'mail' ? '_self' : '_blank'}
+                            rel={link.name === 'mail' ? '' : 'noopener noreferrer'}
+                            class="text-white/70 hover:text-white transition-colors duration-300"
+                            aria-label={link.label}
+                        >
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d={link.icon} />
+                            </svg>
+                        </a>
+                    ))}
                 </div>
             </div>
         </>

@@ -1,4 +1,4 @@
-import { Component, createSignal, For, Show } from 'solid-js';
+import { Component, createSignal, For, Show, onCleanup } from 'solid-js';
 import { gsap } from 'gsap';
 import { PROJECT_DETAILS, PROJECT_CATEGORIES, getProjectsByCategory, type ProjectCategory, type ProjectDetail } from '../constants/projects';
 import CategoryIcon from '~/components/CategoryIcon';
@@ -15,6 +15,15 @@ const ProjectCategories: Component = () => {
     const [isTransitioning, setIsTransitioning] = createSignal(false);
     const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
 
+    let containerRef: HTMLDivElement | undefined;
+    let ctx: gsap.Context | undefined;
+
+    // Cleanup GSAP context on unmount
+
+    onCleanup(() => {
+        if (ctx) ctx.revert();
+    });
+
 
 
     const handleCategoryChange = (category: ProjectCategory) => {
@@ -30,40 +39,47 @@ const ProjectCategories: Component = () => {
         visitedCategories.add(category);
 
         // Fade out current projects (Blur out)
-        gsap.to('.project-card', {
-            opacity: 0,
-            scale: 0.95,
-            filter: 'blur(10px)',
-            duration: 0.25,
-            stagger: 0.03,
-            ease: 'power2.in',
-            onComplete: () => {
-                setActiveCategory(category);
-                setSelectedProject(null);
+        // Use gsap.context to ensure all tweens are collected and can be cleaned up
+        ctx = gsap.context(() => {
+            gsap.to('.project-card', {
+                opacity: 0,
+                scale: 0.95,
+                filter: 'blur(10px)',
+                duration: 0.25,
+                stagger: 0.03,
+                ease: 'power2.in',
+                onComplete: () => {
+                    setActiveCategory(category);
+                    setSelectedProject(null);
 
-                // Fade in new projects (Blur Reveal: Slide up + Unblur)
-                setTimeout(() => {
-                    gsap.fromTo('.project-card',
-                        {
-                            opacity: 0,
-                            y: 20,
-                            scale: 0.98,
-                            filter: 'blur(10px)'
-                        },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            scale: 1,
-                            filter: 'blur(0px)',
-                            duration: 0.4,
-                            stagger: 0.06,
-                            ease: 'power2.out',
-                            onComplete: () => { setIsTransitioning(false); }
-                        }
-                    );
-                }, 20);
-            }
-        });
+                    // Fade in new projects (Blur Reveal: Slide up + Unblur)
+                    setTimeout(() => {
+                        // Re-run context here if needed or just use scoped selector
+                        // Note: nested setTimeout breaks out of context recording unless strictly managed
+                        // relying on simple global selector scoped by parent class in CSS is common,
+                        // but here we just ensure we target this component's cards.
+                        gsap.fromTo('.project-card',
+                            {
+                                opacity: 0,
+                                y: 20,
+                                scale: 0.98,
+                                filter: 'blur(10px)'
+                            },
+                            {
+                                opacity: 1,
+                                y: 0,
+                                scale: 1,
+                                filter: 'blur(0px)',
+                                duration: 0.4,
+                                stagger: 0.06,
+                                ease: 'power2.out',
+                                onComplete: () => { setIsTransitioning(false); }
+                            }
+                        );
+                    }, 20);
+                }
+            });
+        }, containerRef);
     };
 
     const handleProjectClick = (project: ProjectDetail) => {
@@ -92,7 +108,7 @@ const ProjectCategories: Component = () => {
     const currentProjects = () => getProjectsByCategory(activeCategory());
 
     return (
-        <div class="w-full max-w-7xl mx-auto px-4 py-8">
+        <div ref={containerRef} class="w-full max-w-7xl mx-auto px-4 py-8">
             {/* Category Navigation */}
             <div class="mb-12 relative z-20">
                 {/* Desktop/Laptop Tabs (Hidden on Mobile/Tablet) */}

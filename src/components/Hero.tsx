@@ -112,10 +112,17 @@ const Hero: Component = () => {
     };
 
     onMount(() => {
-        const cleanup = initializeNameAnimation();
+        let resizeCleanup: (() => void) | undefined;
 
-        // Return cleanup function if exists
-        return cleanup;
+        const ctx = gsap.context(() => {
+            resizeCleanup = initializeNameAnimation();
+        });
+
+        // Return cleanup function
+        return () => {
+            if (resizeCleanup) resizeCleanup();
+            ctx.revert();
+        };
     });
 
     return (

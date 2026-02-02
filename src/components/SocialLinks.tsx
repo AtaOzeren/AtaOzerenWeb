@@ -14,6 +14,7 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
 
     onMount(() => {
         const socialLinks = document.querySelectorAll('.social-link');
+        const cleanups: (() => void)[] = [];
 
         socialLinks.forEach((link, index) => {
             const linkElement = link as HTMLElement;
@@ -34,8 +35,8 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
                 ease: "back.out(1.7)"
             });
 
-            // Hover animations
-            linkElement.addEventListener('mouseenter', () => {
+            // Event listeners
+            const onMouseEnter = () => {
                 // Icon animation - only the icon moves and scales
                 gsap.to(icon, {
                     duration: 0.4,
@@ -57,9 +58,9 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
                     ease: "power2.inOut",
                     delay: 0.4
                 });
-            });
+            };
 
-            linkElement.addEventListener('mouseleave', () => {
+            const onMouseLeave = () => {
                 // Reset icon - kill all icon animations
                 gsap.killTweensOf(icon);
                 gsap.to(icon, {
@@ -72,10 +73,9 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
 
                 // Remove glow effect
                 icon.style.filter = 'none';
-            });
+            };
 
-            // Click animation - only for icon
-            linkElement.addEventListener('click', () => {
+            const onClick = () => {
                 gsap.to(icon, {
                     duration: 0.1,
                     scale: 0.8,
@@ -83,8 +83,28 @@ const SocialLinks: Component<SocialLinksProps> = (props) => {
                     repeat: 1,
                     ease: "power2.inOut"
                 });
+            };
+
+            linkElement.addEventListener('mouseenter', onMouseEnter);
+            linkElement.addEventListener('mouseleave', onMouseLeave);
+            linkElement.addEventListener('click', onClick);
+
+            // Access cleanup function and add listeners removal
+            // Note: In SolidJS, onCleanup inside the map/loop or strict cleanup is better, 
+            // but since these are static refs, we can cleanup in the onMount return or using a registered cleanup.
+            // Using a simple array to store cleanups would be safer if re-renders happened, but onMount runs once.
+            // We will push cleanup functions to an array.
+            cleanups.push(() => {
+                linkElement.removeEventListener('mouseenter', onMouseEnter);
+                linkElement.removeEventListener('mouseleave', onMouseLeave);
+                linkElement.removeEventListener('click', onClick);
             });
         });
+
+        // Register final cleanup with SolidJS
+        return () => {
+            cleanups.forEach(cleanup => cleanup());
+        };
     });
 
     return (

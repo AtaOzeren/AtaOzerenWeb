@@ -423,8 +423,12 @@ const Navbar: Component = () => {
     };
 
     onMount(() => {
-        initializeLogoAnimation();
-        initializeNavLinkAnimations();
+        const ctx = gsap.context(() => {
+            initializeLogoAnimation();
+            initializeNavLinkAnimations();
+        });
+
+        return () => ctx.revert();
     });
 
     // Component styles

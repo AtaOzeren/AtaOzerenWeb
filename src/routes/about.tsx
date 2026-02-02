@@ -1,4 +1,4 @@
-import { Title } from "@solidjs/meta";
+import { Title, Meta } from "@solidjs/meta";
 import { useI18n } from "~/contexts/I18nContext";
 import AnimatedBackground from "~/components/AnimatedBackground";
 import { onMount, createSignal, Show } from "solid-js";
@@ -170,6 +170,9 @@ export default function About() {
   return (
     <main class="min-h-screen relative overflow-hidden pt-20">
       <Title>{t('about.title')} - {t('hero.name')}</Title>
+      <Meta name="description" content={t('about.content.paragraph1')} />
+      <Meta property="og:title" content={`${t('about.title')} - ${t('hero.name')}`} />
+      <Meta property="og:description" content={t('about.content.paragraph1')} />
 
       {/* Animated Background Layer */}
       <AnimatedBackground variant="dark" intensity="high" />

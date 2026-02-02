@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import { Title } from "@solidjs/meta";
+import { Title, Meta } from "@solidjs/meta";
 import { THEME } from "../constants";
 import { useI18n } from "../contexts/I18nContext";
 import Navbar from "../components/Navbar";
@@ -13,6 +13,9 @@ const Projects: Component = () => {
     <>
       {/* Page Title */}
       <Title>{t('projects.title')} - {t('hero.name')}</Title>
+      <Meta name="description" content="Explore my portfolio of web development projects, including personal and professional work." />
+      <Meta property="og:title" content={`${t('projects.title')} - ${t('hero.name')}`} />
+      <Meta property="og:description" content="Explore my portfolio of web development projects, including personal and professional work." />
 
       {/* Navbar */}
       <Navbar />

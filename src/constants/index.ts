@@ -2,6 +2,7 @@
 export const APP_CONFIG = {
     name: 'Ata Özeren',
     title: 'Personal Website',
+    description: "Ata Özeren's personal website containing his portfolio, blog and contact information.",
     defaultLanguage: 'en' as const,
     supportedLanguages: ['tr', 'en', 'de', 'fr', 'es'] as const,
     scrollThreshold: 50,

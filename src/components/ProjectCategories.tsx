@@ -51,8 +51,7 @@ const ProjectCategories: Component = () => {
     const [selectedProject, setSelectedProject] = createSignal<ProjectDetail | null>(null);
     const [isTransitioning, setIsTransitioning] = createSignal(false);
 
-    // Initial load: mark default category as visited
-    visitedCategories.add('frontend');
+
 
     const handleCategoryChange = (category: ProjectCategory) => {
         if (category === activeCategory() || isTransitioning()) return;

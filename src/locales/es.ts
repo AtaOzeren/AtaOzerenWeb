@@ -57,7 +57,8 @@ export const es: Locale = {
             backend: "Backend",
             mobile: "Móvil",
             crm: "CRM",
-            mcp: "MCP"
+            mcp: "MCP",
+            active: "Proyectos Activos"
         },
         projectTypes: {
             corporate: "Corporativo",

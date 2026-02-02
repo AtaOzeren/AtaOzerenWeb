@@ -1,4 +1,4 @@
-export type ProjectCategory = 'backend' | 'frontend' | 'mobile' | 'crm' | 'mcp';
+export type ProjectCategory = 'backend' | 'frontend' | 'mobile' | 'crm' | 'mcp' | 'active';
 
 export interface ProjectDetail {
     id: string;
@@ -20,6 +20,7 @@ export const PROJECT_CATEGORIES = [
     { id: 'mobile', icon: 'smartphone', gradient: 'from-green-500 to-emerald-500' },
     { id: 'crm', icon: 'users', gradient: 'from-orange-500 to-amber-500' },
     { id: 'mcp', icon: 'cpu', gradient: 'from-rose-500 to-red-500' },
+    { id: 'active', icon: 'activity', gradient: 'from-indigo-500 to-violet-500' },
 ] as const;
 
 export const PROJECT_DETAILS: ProjectDetail[] = [

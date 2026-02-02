@@ -55,7 +55,8 @@ export const tr = {
             backend: "Backend",
             mobile: "Mobil",
             crm: "CRM",
-            mcp: "MCP"
+            mcp: "MCP",
+            active: "Aktif Projeler"
         },
         projectTypes: {
             corporate: "Kurumsal",

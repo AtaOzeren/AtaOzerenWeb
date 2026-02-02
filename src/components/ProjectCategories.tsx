@@ -37,16 +37,29 @@ const CategoryIcon = (props: { icon: string; class?: string }) => {
     return IconComponent ? <IconComponent /> : null;
 };
 
+// Persistent state module-level variable
+const visitedCategories = new Set<string>();
+
 const ProjectCategories: Component = () => {
     const { t } = useI18n();
     const [activeCategory, setActiveCategory] = createSignal<ProjectCategory>('frontend');
     const [selectedProject, setSelectedProject] = createSignal<ProjectDetail | null>(null);
     const [isTransitioning, setIsTransitioning] = createSignal(false);
 
+    // Initial load: mark default category as visited
+    visitedCategories.add('frontend');
+
     const handleCategoryChange = (category: ProjectCategory) => {
         if (category === activeCategory() || isTransitioning()) return;
 
+        // If category was already visited, switch instantly without animation
+        if (visitedCategories.has(category)) {
+            setActiveCategory(category);
+            return;
+        }
+
         setIsTransitioning(true);
+        visitedCategories.add(category);
 
         // Fade out current projects
         gsap.to('.project-card', {

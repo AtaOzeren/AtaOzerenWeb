@@ -17,9 +17,13 @@ export default function App() {
             <Meta name="description" content={APP_CONFIG.description || "Ata Özeren's personal website containing his portfolio, blog and contact information."} />
             <Meta property="og:type" content="website" />
             <Meta property="og:title" content="Ata Özeren - Personal Website" />
-            <Meta property="og:description" content="Ata Özeren's personal website containing his portfolio, blog and contact information." />
+            <Meta property="og:description" content={APP_CONFIG.description} />
             <Meta property="og:url" content={APP_CONFIG.siteUrl} />
+            <Meta property="og:image" content={`${APP_CONFIG.siteUrl}/ata-icon.png`} />
             <Meta name="twitter:card" content="summary_large_image" />
+            <Meta name="twitter:image" content={`${APP_CONFIG.siteUrl}/ata-icon.png`} />
+            <Meta name="twitter:title" content={APP_CONFIG.title} />
+            <Meta name="twitter:description" content={APP_CONFIG.description} />
             <Navbar />
             <Suspense>{props.children}</Suspense>
           </MetaProvider>

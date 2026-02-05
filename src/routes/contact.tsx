@@ -3,7 +3,7 @@ import { useI18n } from "~/contexts/I18nContext";
 import AnimatedBackground from "~/components/AnimatedBackground";
 import { onMount, createSignal, onCleanup } from "solid-js";
 import gsap from "gsap";
-import { Mail, Phone, MapPin, Copy, Check, Send, Clock } from "lucide-solid";
+import { Mail, MapPin, Copy, Check, Send, Clock } from "lucide-solid";
 
 export default function Contact() {
     const { t } = useI18n();
@@ -13,7 +13,7 @@ export default function Contact() {
     let contactCardsRef: HTMLDivElement | undefined;
 
     const [emailCopied, setEmailCopied] = createSignal(false);
-    const [phoneCopied, setPhoneCopied] = createSignal(false);
+
     const [time, setTime] = createSignal("");
 
     const updateTime = () => {
@@ -25,16 +25,11 @@ export default function Contact() {
         }));
     };
 
-    const copyToClipboard = async (text: string, type: 'email' | 'phone') => {
+    const copyToClipboard = async (text: string) => {
         try {
             await navigator.clipboard.writeText(text);
-            if (type === 'email') {
-                setEmailCopied(true);
-                setTimeout(() => setEmailCopied(false), 2000);
-            } else {
-                setPhoneCopied(true);
-                setTimeout(() => setPhoneCopied(false), 2000);
-            }
+            setEmailCopied(true);
+            setTimeout(() => setEmailCopied(false), 2000);
         } catch (err) {
             console.error('Failed to copy:', err);
         }
@@ -181,7 +176,7 @@ export default function Contact() {
                                     <button
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            copyToClipboard('ataozeren@icloud.com', 'email');
+                                            copyToClipboard('ataozeren@icloud.com');
                                         }}
                                         class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/15 rounded-lg transition-all duration-300 cursor-pointer"
                                         title="Kopyala"
@@ -195,41 +190,7 @@ export default function Contact() {
                                 </div>
                             </div>
 
-                            {/* Phone Card */}
-                            <div
-                                class="contact-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-                            >
-                                <div class="flex items-center gap-4">
-                                    <a href="tel:+905467190703" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors cursor-pointer">
-                                        <Phone size={24} class="text-white" />
-                                    </a>
-                                    <div class="flex-1">
-                                        <h3 class="text-white/60 text-xs uppercase tracking-wider mb-1">{t('contact.phone')}</h3>
-                                        <p class="text-white font-medium">+90 546 719 07 03</p>
-                                    </div>
-                                    <a
-                                        href="tel:+905467190703"
-                                        class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/15 rounded-lg transition-all duration-300 cursor-pointer"
-                                        title="Ara"
-                                    >
-                                        <Phone size={18} class="text-white/40 group-hover:text-white/70 transition-colors" />
-                                    </a>
-                                    <button
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            copyToClipboard('+905467190703', 'phone');
-                                        }}
-                                        class="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/15 rounded-lg transition-all duration-300 cursor-pointer"
-                                        title="Kopyala"
-                                    >
-                                        {phoneCopied() ? (
-                                            <Check size={18} class="text-green-400" />
-                                        ) : (
-                                            <Copy size={18} class="text-white/40 group-hover:text-white/70 transition-colors" />
-                                        )}
-                                    </button>
-                                </div>
-                            </div>
+
 
                         </div>
                     </div>

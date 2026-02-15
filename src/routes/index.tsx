@@ -8,9 +8,9 @@ export default function Home() {
   return (
     <>
       <Title>{t('hero.name')} - {t('hero.title')}</Title>
-      <Meta name="description" content={t('hero.subtitle') || "Modern web solutions for your business."} />
+      <Meta name="description" content={t('hero.description') || "Modern web solutions for your business."} />
       <Meta property="og:title" content={`${t('hero.name')} - ${t('hero.title')}`} />
-      <Meta property="og:description" content={t('hero.subtitle') || "Modern web solutions for your business."} />
+      <Meta property="og:description" content={t('hero.description') || "Modern web solutions for your business."} />
       <Hero />
     </>
   );

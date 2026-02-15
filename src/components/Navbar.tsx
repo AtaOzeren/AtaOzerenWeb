@@ -3,7 +3,7 @@ import { useI18n } from '../contexts/I18nContext';
 import { THEME, ANIMATIONS } from '../constants';
 import LanguageSwitcher from './LanguageSwitcher';
 import { gsap } from 'gsap';
-import { A } from '@solidjs/router';
+import { A, useLocation } from '@solidjs/router';
 import { SOCIAL_LINKS } from '../constants/socials';
 
 // Animation configuration constants
@@ -39,6 +39,7 @@ const NAVIGATION_LINKS = [
 ];
 
 const Navbar: Component = () => {
+    const location = useLocation();
     const { t } = useI18n();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = createSignal(false);
 
@@ -448,7 +449,7 @@ const Navbar: Component = () => {
                     <div class={`flex items-center justify-between w-full ${THEME.spacing.navHeight}`}>
                         {/* Logo Section */}
                         <div class="flex-shrink-0 -ml-2">
-                            <A href="/" class={`logo-ata cursor-pointer ${logoStyles()} ${isMobileMenuOpen() ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                            <A href="/" class={`logo-ata cursor-pointer ${logoStyles()} ${isMobileMenuOpen() ? 'opacity-0 pointer-events-none' : 'opacity-100'} ${location.pathname === '/' ? 'hidden' : ''}`}>
                                 ATA
                             </A>
                         </div>
